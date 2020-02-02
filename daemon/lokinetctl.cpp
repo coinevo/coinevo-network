@@ -110,14 +110,14 @@ namespace
 int
 main(int argc, char* argv[])
 {
-#ifdef LOKINET_DEBUG
+#ifdef COINEVONET_DEBUG
   absl::SetMutexDeadlockDetectionMode(absl::OnDeadlockCycle::kAbort);
 #endif
 
   // clang-format off
   cxxopts::Options options(
-    "lokinetctl",
-    "LokiNET is a free, open source, private, decentralized, \"market based sybil resistant\" and IP based onion routing network"
+    "coinevonetctl",
+    "CoinevoNET is a free, open source, private, decentralized, \"market based sybil resistant\" and IP based onion routing network"
   );
 
   options.add_options()

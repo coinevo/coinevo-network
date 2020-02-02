@@ -8,7 +8,7 @@ CFLAGS=-Ofast -march=nocona -mfpmath=sse
 LIBS=-lws2_32
 LDFLAGS=-static
 
-all: regdbhelper.dll lokinet-bootstrap.exe 7z.exe dbghelp tcpv6 tap-win32
+all: regdbhelper.dll coinevonet-bootstrap.exe 7z.exe dbghelp tcpv6 tap-win32
 default: all
 
 ifndef RELEASE
@@ -31,23 +31,23 @@ curl:
 	cd curl-7.66.0; ./configure --host=i686-w64-mingw32 --target=i686-w64-mingw32 CC=$(CC) CXX=$(CXX) CFLAGS="$(CFLAGS)" LIBS=$(LIBS) --disable-shared --without-zlib --without-ssl --with-mbedtls=$(PWD) --enable-optimize --enable-http --disable-ftp --prefix=$(PWD) --disable-file --disable-ldap  --disable-ldaps  --disable-rtsp --enable-proxy --disable-dict --disable-telnet --disable-tftp --disable-pop3 --disable-imap --disable-smb --disable-smtp --disable-gopher --enable-manual
 	$(MAKE) -j4 -C curl-7.66.0 install
 
-lokinet-bootstrap.exe: mbedtls curl dbghelp
+coinevonet-bootstrap.exe: mbedtls curl dbghelp
 	cp bin/curl.exe $@
 	wget -O rootcerts.pem https://curl.haxx.se/ca/cacert.pem
 	cp ../LICENSE .;unix2dos LICENSE LICENSE
 
 dbghelp:
-	wget https://snowlight.net/loki/win32-dist/dbghelp32.dll
-	wget https://snowlight.net/loki/win32-dist/dbghelp64.dll
+	wget https://snowlight.net/coinevo/win32-dist/dbghelp32.dll
+	wget https://snowlight.net/coinevo/win32-dist/dbghelp64.dll
 
 else
 regdbhelper.dll:
-	wget https://snowlight.net/loki/win32-dist/dbghelp32.dll
-	wget https://snowlight.net/loki/win32-dist/dbghelp64.dll
-	wget https://snowlight.net/loki/win32-dist/regdbhelper.dll
+	wget https://snowlight.net/coinevo/win32-dist/dbghelp32.dll
+	wget https://snowlight.net/coinevo/win32-dist/dbghelp64.dll
+	wget https://snowlight.net/coinevo/win32-dist/regdbhelper.dll
 
-lokinet-bootstrap.exe:
-	wget https://snowlight.net/loki/win32-dist/lokinet-bootstrap.exe
+coinevonet-bootstrap.exe:
+	wget https://snowlight.net/coinevo/win32-dist/coinevonet-bootstrap.exe
 	wget -O rootcerts.pem https://curl.haxx.se/ca/cacert.pem
 	cp ../LICENSE .;unix2dos LICENSE LICENSE
 
@@ -57,15 +57,15 @@ endif
 
 # Common rules
 7z.exe:
-	wget https://snowlight.net/loki/win32-dist/7z.exe
+	wget https://snowlight.net/coinevo/win32-dist/7z.exe
 
 tcpv6:
-	wget https://snowlight.net/loki/win32-dist/inet6.7z
+	wget https://snowlight.net/coinevo/win32-dist/inet6.7z
 
 tap-win32:
-	wget https://snowlight.net/loki/win32-dist/tap-windows-9.21.2.7z
+	wget https://snowlight.net/coinevo/win32-dist/tap-windows-9.21.2.7z
 	mv tap-windows-9.21.2.7z tuntapv9_n6.7z
-	wget https://snowlight.net/loki/win32-dist/tap-windows-9.9.2_3.7z
+	wget https://snowlight.net/coinevo/win32-dist/tap-windows-9.9.2_3.7z
 	mv tap-windows-9.9.2_3.7z tuntapv9.7z
 
 libuv:

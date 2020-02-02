@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
-namespace network.loki.lokinet.win32.ui
+namespace network.coinevo.coinevonet.win32.ui
 {
     public partial class UserSettingsForm : Form
     {
@@ -11,9 +11,9 @@ namespace network.loki.lokinet.win32.ui
         {
             InitializeComponent();
             if (Program.platform == PlatformID.Win32NT)
-                config_path = Environment.ExpandEnvironmentVariables("%APPDATA%\\.lokinet");
+                config_path = Environment.ExpandEnvironmentVariables("%APPDATA%\\.coinevonet");
             else
-                config_path = Environment.ExpandEnvironmentVariables("%HOME%/.lokinet");
+                config_path = Environment.ExpandEnvironmentVariables("%HOME%/.coinevonet");
         }
 
         private string config_path;
@@ -48,7 +48,7 @@ namespace network.loki.lokinet.win32.ui
                     ld.setText(main_frame.logText);
 
                 ld.CreateLog(config_path);
-                MessageBox.Show(string.Format("Wrote log to {0}, previous log rotated", ld.getLogPath()), "LokiNET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(string.Format("Wrote log to {0}, previous log rotated", ld.getLogPath()), "CoinevoNET", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 main_frame.logText = string.Empty;
             }
         }
@@ -63,7 +63,7 @@ namespace network.loki.lokinet.win32.ui
         private void BtnEditCfg_Click(object sender, EventArgs e)
         {
             try {
-                Process.Start(string.Format("{0}/lokinet.ini", config_path)); }
+                Process.Start(string.Format("{0}/coinevonet.ini", config_path)); }
             catch
             {
                 MessageBox.Show("No existing config found");
@@ -74,27 +74,27 @@ namespace network.loki.lokinet.win32.ui
 
         private void BtnNewCfg_Click(object sender, EventArgs e)
         {
-            if (File.Exists(string.Format("{0}/lokinet.ini", config_path)))
+            if (File.Exists(string.Format("{0}/coinevonet.ini", config_path)))
             {
-                DialogResult resp = MessageBox.Show("WARNING: This will overwrite your existing config file, Continue?", "Lokinet", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult resp = MessageBox.Show("WARNING: This will overwrite your existing config file, Continue?", "Coinevonet", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 switch(resp)
                 {
                     case DialogResult.Yes:
-                        File.Delete(string.Format("{0}/lokinet.ini", config_path));
+                        File.Delete(string.Format("{0}/coinevonet.ini", config_path));
                         break;
                     case DialogResult.No:
                         return;
                 }
             }
             
-            string lokinetExeString;
+            string coinevonetExeString;
 
             if (Program.platform == PlatformID.Win32NT)
-                lokinetExeString = String.Format("{0}\\lokinet.exe", Directory.GetCurrentDirectory());
+                coinevonetExeString = String.Format("{0}\\coinevonet.exe", Directory.GetCurrentDirectory());
             else
-                lokinetExeString = String.Format("{0}/lokinet", Directory.GetCurrentDirectory());
+                coinevonetExeString = String.Format("{0}/coinevonet", Directory.GetCurrentDirectory());
             Process p = new Process();
-            p.StartInfo.FileName = lokinetExeString;
+            p.StartInfo.FileName = coinevonetExeString;
             p.StartInfo.Arguments = "-g";
             p.StartInfo.CreateNoWindow = true;
             p.StartInfo.UseShellExecute = false;
@@ -105,7 +105,7 @@ namespace network.loki.lokinet.win32.ui
 
         private void msg(object sender, EventArgs e)
         {
-            MessageBox.Show(string.Format("Created new config file at {0}/lokinet.ini", config_path), "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            MessageBox.Show(string.Format("Created new config file at {0}/coinevonet.ini", config_path), "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
     }
 }

@@ -1,12 +1,12 @@
-#ifndef LOKINET_BOOTSERV_CONFIG_HPP
-#define LOKINET_BOOTSERV_CONFIG_HPP
+#ifndef COINEVONET_BOOTSERV_CONFIG_HPP
+#define COINEVONET_BOOTSERV_CONFIG_HPP
 #include <unordered_map>
 #include <string_view>
 #include <functional>
 #include <memory>
 #include <vector>
 
-namespace lokinet
+namespace coinevonet
 {
   namespace bootserv
   {
@@ -42,6 +42,6 @@ namespace lokinet
       Config_impl_t m_Config;
     };
   }  // namespace bootserv
-}  // namespace lokinet
+}  // namespace coinevonet
 
 #endif

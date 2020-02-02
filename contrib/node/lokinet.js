@@ -1,2 +1,2 @@
-var lokinet = require("bindings")("lokinet");
-console.log(lokinet);
+var coinevonet = require("bindings")("coinevonet");
+console.log(coinevonet);

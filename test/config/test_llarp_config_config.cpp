@@ -20,15 +20,15 @@ TEST(Config, sample_config)
 # number of crypto worker threads
 threads=4
 # path to store signed RC
-contact-file=/home/lokinet/1/self.signed
+contact-file=/home/coinevonet/1/self.signed
 # path to store transport private key
-transport-privkey=/home/lokinet/1/transport.private
+transport-privkey=/home/coinevonet/1/transport.private
 # path to store identity signing key
-ident-privkey=/home/lokinet/1/identity.private
+ident-privkey=/home/coinevonet/1/identity.private
 # encryption key for onion routing
-encryption-privkey=/home/lokinet/1/encryption.private
+encryption-privkey=/home/coinevonet/1/encryption.private
 
-# uncomment following line to set router nickname to 'lokinet'
+# uncomment following line to set router nickname to 'coinevonet'
 netid=bunny
 
 [logging]
@@ -39,7 +39,7 @@ level=info
 # uncomment for syslog logging
 #type=syslog
 [metrics]
-json-metrics-path=/home/lokinet/1/metrics.json
+json-metrics-path=/home/coinevonet/1/metrics.json
 
 # admin api (disabled by default)
 [api]
@@ -51,9 +51,9 @@ bind=127.0.0.1:1190
 
 # system settings for privileges and such
 [system]
-user=lokinet
-group=lokinet
-pidfile=/home/lokinet/1/lokinet.pid
+user=coinevonet
+group=coinevonet
+pidfile=/home/coinevonet/1/coinevonet.pid
 
 # dns provider configuration section
 [dns]
@@ -64,17 +64,17 @@ bind=127.0.1.1:53
 # network database settings block
 [netdb]
 # directory for network database skiplist storage
-dir=/home/lokinet/1/netdb
+dir=/home/coinevonet/1/netdb
 
 # bootstrap settings
 [bootstrap]
 # add a bootstrap node's signed identity to the list of nodes we want to bootstrap from
 # if we don't have any peers we connect to this router
-add-node=/home/lokinet/1/bootstrap.signed
+add-node=/home/coinevonet/1/bootstrap.signed
 
 # snapps configuration section
 [services]# uncomment next line to enable a snapp
-#example-snapp=/home/lokinet/1/snapp-example.ini
+#example-snapp=/home/coinevonet/1/snapp-example.ini
 
 [bind]
 eth0=5501
@@ -109,5 +109,5 @@ metric-tank-host=52.80.56.123:2003
   }
 
   ASSERT_THAT(config.bootstrap.routers,
-              ElementsAre("/home/lokinet/1/bootstrap.signed"));
+              ElementsAre("/home/coinevonet/1/bootstrap.signed"));
 }

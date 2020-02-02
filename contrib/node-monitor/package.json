@@ -1,24 +1,24 @@
 {
-  "name": "lokinet-monitor",
+  "name": "coinevonet-monitor",
   "version": "0.0.1",
-  "description": "Lokinet monitor",
+  "description": "Coinevonet monitor",
   "main": "monitor_client.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/loki-project/loki-network.git"
+    "url": "git+https://github.com/coinevo/coinevo-network.git"
   },
   "keywords": [
-    "lokinet"
+    "coinevonet"
   ],
   "author": "Ryan Tharp",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/loki-project/loki-network/issues"
+    "url": "https://github.com/coinevo/coinevo-network/issues"
   },
-  "homepage": "https://github.com/loki-project/loki-network#readme",
+  "homepage": "https://github.com/coinevo/coinevo-network#readme",
   "dependencies": {
     "net-ping": "^1.2.3"
   }

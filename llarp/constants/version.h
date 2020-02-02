@@ -4,13 +4,13 @@
 // This is only here so version.cpp.in and the weird archaic windows build
 // recipies can use the version.
 
-#define LLARP_NAME "lokinet"
+#define LLARP_NAME "coinevonet"
 
 #define LLARP_VERSION_MAJ 0
 #define LLARP_VERSION_MIN 6
 #define LLARP_VERSION_PATCH 4
 
-#define LLARP_DEFAULT_NETID "lokinet"
+#define LLARP_DEFAULT_NETID "coinevonet"
 
 #ifndef LLARP_RELEASE_MOTTO
 #define LLARP_RELEASE_MOTTO "(dev build)"

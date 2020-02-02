@@ -1,9 +1,9 @@
-#ifndef BOOTSERV_LOKINET_CRON_HPP
-#define BOOTSERV_LOKINET_CRON_HPP
+#ifndef BOOTSERV_COINEVONET_CRON_HPP
+#define BOOTSERV_COINEVONET_CRON_HPP
 
 #include "handler.hpp"
 
-namespace lokinet
+namespace coinevonet
 {
   namespace bootserv
   {
@@ -26,6 +26,6 @@ namespace lokinet
     };
 
   }  // namespace bootserv
-}  // namespace lokinet
+}  // namespace coinevonet
 
 #endif

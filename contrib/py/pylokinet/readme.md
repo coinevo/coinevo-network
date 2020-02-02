@@ -1,6 +1,6 @@
-# pylokinet
+# pycoinevonet
 
-lokinet with python 3
+coinevonet with python 3
 
     # python3 setup.py install
 
@@ -8,20 +8,20 @@ lokinet with python 3
 
 bootserv is a bootstrap server for accepting and serving RCs
 
-    $ gunicorn -b 0.0.0.0:8000 pylokinet.bootserv:app
+    $ gunicorn -b 0.0.0.0:8000 pycoinevonet.bootserv:app
 
-## pylokinet instance
+## pycoinevonet instance
 
-obtain `liblokinet-shared.so` from a lokinet build
+obtain `libcoinevonet-shared.so` from a coinevonet build
 
 run (root):
     
-    # export LOKINET_ROOT=/tmp/lokinet-instance/
-    # export LOKINET_LIB=/path/to/liblokinet-shared.so
-    # export LOKINET_BOOTSTRAP_URL=http://bootserv.ip.address.here:8000/bootstrap.signed
-    # export LOKINET_PING_URL=http://bootserv.ip.address.here:8000/ping
-    # export LOKINET_SUBMIT_URL=http://bootserv.ip.address.here:8000/
-    # export LOKINET_IP=public.ip.goes.here
-    # export LOKINET_PORT=1090
-    # export LOKINET_IFNAME=eth0
-    # python3 -m pylokinet
+    # export COINEVONET_ROOT=/tmp/coinevonet-instance/
+    # export COINEVONET_LIB=/path/to/libcoinevonet-shared.so
+    # export COINEVONET_BOOTSTRAP_URL=http://bootserv.ip.address.here:8000/bootstrap.signed
+    # export COINEVONET_PING_URL=http://bootserv.ip.address.here:8000/ping
+    # export COINEVONET_SUBMIT_URL=http://bootserv.ip.address.here:8000/
+    # export COINEVONET_IP=public.ip.goes.here
+    # export COINEVONET_PORT=1090
+    # export COINEVONET_IFNAME=eth0
+    # python3 -m pycoinevonet

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace network.loki.lokinet.win32.ui
+namespace network.coinevo.coinevonet.win32.ui
 {
     static class Program
     {
@@ -14,8 +14,8 @@ namespace network.loki.lokinet.win32.ui
         [STAThread]
         static void Main()
         {
-            // Scrub any old lokinet process left behind
-            Process[] old_pids = Process.GetProcessesByName("lokinet");
+            // Scrub any old coinevonet process left behind
+            Process[] old_pids = Process.GetProcessesByName("coinevonet");
             foreach (Process pid in old_pids)
             {
                 try
@@ -29,7 +29,7 @@ namespace network.loki.lokinet.win32.ui
             Application.Run(new main_frame());
             try
             {
-                main_frame.lokiNetDaemon.Kill();
+                main_frame.coinevoNetDaemon.Kill();
             }
             catch
             { }

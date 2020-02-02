@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  lokinet
+//  coinevonet
 //
-//  Copyright © 2019 Loki. All rights reserved.
+//  Copyright © 2019 Coinevo. All rights reserved.
 //
 
 import Cocoa
@@ -12,7 +12,7 @@ let LOG_WINDOW_CONTROLLER: NSWindowController = NSWindowController(window: nil)
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    var lokinet: LokinetRunner? = nil
+    var coinevonet: CoinevonetRunner? = nil
     var appender: Appendable? = nil
 
     var statusBarItem: NSStatusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -26,15 +26,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         guard let statusButton = statusBarItem.button else { return }
-        statusButton.title = "LokiNet"
+        statusButton.title = "CoinevoNet"
         let statusMenu: NSMenu = NSMenu()
         statusMenu.autoenablesItems = false
-        statusMenu.addItem(withTitle: "LokiNet", action: nil, keyEquivalent: "")
+        statusMenu.addItem(withTitle: "CoinevoNet", action: nil, keyEquivalent: "")
 
         let runItem: NSMenuItem = {
             let item = NSMenuItem(
                 title: "Run",
-                action: #selector(runLokinet),
+                action: #selector(runCoinevonet),
                 keyEquivalent: "r"
             )
             item.target = self
@@ -45,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let stopItem: NSMenuItem = {
             let item = NSMenuItem(
                 title: "Stop",
-                action: #selector(stopLokinet),
+                action: #selector(stopCoinevonet),
                 keyEquivalent: "s"
 
             )
@@ -90,14 +90,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        lokinet?.stop()
+        coinevonet?.stop()
     }
 }
 
 extension AppDelegate {
     @objc
     func showWindow(sender: NSMenuItem) {
-        if let vc = WindowsManager.getVC(withIdentifier: "LokinetLogController", ofType: LokinetLogController.self) {
+        if let vc = WindowsManager.getVC(withIdentifier: "CoinevonetLogController", ofType: CoinevonetLogController.self) {
             appender = vc.log
             let window: NSWindow = {
                 let w = NSWindow(contentViewController: vc)
@@ -111,7 +111,7 @@ extension AppDelegate {
                 return w
             }()
 
-            lokinet?.logAppender = vc.log
+            coinevonet?.logAppender = vc.log
 
             if LOG_WINDOW_CONTROLLER.window == nil {
                 LOG_WINDOW_CONTROLLER.window = window
@@ -122,11 +122,11 @@ extension AppDelegate {
     }
 
     @objc
-    func runLokinet(sender: NSMenuItem) {
-        if lokinet == nil {
-            lokinet = LokinetRunner(interface: Preferences.interfaceName, path: Preferences.lokinetPath)
-            lokinet?.logAppender = appender
-            lokinet?.start()
+    func runCoinevonet(sender: NSMenuItem) {
+        if coinevonet == nil {
+            coinevonet = CoinevonetRunner(interface: Preferences.interfaceName, path: Preferences.coinevonetPath)
+            coinevonet?.logAppender = appender
+            coinevonet?.start()
         }
 
         sender.isEnabled = false;
@@ -137,9 +137,9 @@ extension AppDelegate {
     }
 
     @objc
-    func stopLokinet(_ sender: NSMenuItem) {
-        lokinet?.stop()
-        lokinet = nil
+    func stopCoinevonet(_ sender: NSMenuItem) {
+        coinevonet?.stop()
+        coinevonet = nil
 
         sender.isEnabled = false;
 

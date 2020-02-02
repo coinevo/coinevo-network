@@ -74,7 +74,7 @@ namespace llarp
     // our router contact
     RouterContact _rc;
 
-    /// are we using the lokid service node seed ?
+    /// are we using the coinevod service node seed ?
     bool usingSNSeed = false;
 
     /// should we obey the service node whitelist?
@@ -260,11 +260,11 @@ namespace llarp
     std::unique_ptr< rpc::Server > rpcServer;
     std::string rpcBindAddr = DefaultRPCBindAddr;
 
-    /// lokid caller
+    /// coinevod caller
     std::unique_ptr< rpc::Caller > rpcCaller;
-    std::string lokidRPCAddr = "127.0.0.1:22023";
-    std::string lokidRPCUser;
-    std::string lokidRPCPassword;
+    std::string coinevodRPCAddr = "127.0.0.1:33331";
+    std::string coinevodRPCUser;
+    std::string coinevodRPCPassword;
 
     Profiling _routerProfiling;
     std::string routerProfilesFile = "profiles.dat";

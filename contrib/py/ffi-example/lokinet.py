@@ -7,9 +7,9 @@ import time
 import threading
 import os
 
-lib_file = os.path.join(os.path.realpath('.'), 'liblokinet.so')
+lib_file = os.path.join(os.path.realpath('.'), 'libcoinevonet.so')
 
-class LokiNET(threading.Thread):
+class CoinevoNET(threading.Thread):
 
     lib = None
     ctx = None
@@ -22,12 +22,12 @@ class LokiNET(threading.Thread):
 
     def inform_fail(self):
         """
-        inform lokinet crashed
+        inform coinevonet crashed
         """
 
     def inform_end(self):
         """
-        inform lokinet ended clean
+        inform coinevonet ended clean
         """
 
 
@@ -48,19 +48,19 @@ class LokiNET(threading.Thread):
             self.lib.llarp_main_free(self.ctx)
 
 def main():
-    loki = LokiNET()
-    if loki.load(lib_file, b'daemon.ini'):
-        if loki.configure():
-            loki.start()
+    coinevo = CoinevoNET()
+    if coinevo.load(lib_file, b'daemon.ini'):
+        if coinevo.configure():
+            coinevo.start()
         else:
-            print("failed to configure lokinet context")
+            print("failed to configure coinevonet context")
         try:
             while True:
                 time.sleep(1)
         except KeyboardInterrupt:
             llarp.signal(signal.SIGINT)
         finally:
-            loki.close()
+            coinevo.close()
             return
 
 

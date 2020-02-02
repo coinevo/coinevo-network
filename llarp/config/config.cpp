@@ -11,7 +11,7 @@
 #include <util/mem.hpp>
 #include <util/meta/memfn.hpp>
 #include <util/str.hpp>
-#include <util/lokinet_init.h>
+#include <util/coinevonet_init.h>
 
 #include <absl/strings/strip.h>
 
@@ -349,7 +349,7 @@ namespace llarp
   }
 
   void
-  LokidConfig::fromSection(string_view key, string_view val)
+  CoinevodConfig::fromSection(string_view key, string_view val)
   {
     if(key == "service-node-seed")
     {
@@ -362,15 +362,15 @@ namespace llarp
     }
     if(key == "jsonrpc" || key == "addr")
     {
-      lokidRPCAddr = tostr(val);
+      coinevodRPCAddr = tostr(val);
     }
     if(key == "username")
     {
-      lokidRPCUser = tostr(val);
+      coinevodRPCUser = tostr(val);
     }
     if(key == "password")
     {
-      lokidRPCPassword = tostr(val);
+      coinevodRPCPassword = tostr(val);
     }
   }
 
@@ -473,7 +473,7 @@ namespace llarp
   bool
   Config::parse(const ConfigParser &parser)
   {
-    if(Lokinet_INIT())
+    if(Coinevonet_INIT())
       return false;
     router    = find_section< RouterConfig >(parser, "router");
     network   = find_section< NetworkConfig >(parser, "network");
@@ -485,7 +485,7 @@ namespace llarp
     system    = find_section< SystemConfig >(parser, "system");
     metrics   = find_section< MetricsConfig >(parser, "metrics");
     api       = find_section< ApiConfig >(parser, "api");
-    lokid     = find_section< LokidConfig >(parser, "lokid");
+    coinevod     = find_section< CoinevodConfig >(parser, "coinevod");
     bootstrap = find_section< BootstrapConfig >(parser, "bootstrap");
     logging   = find_section< LoggingConfig >(parser, "logging");
     return true;
@@ -499,13 +499,13 @@ namespace llarp
 #else
     const fs::path homedir = fs::path(getenv("HOME"));
 #endif
-    return homedir / fs::path(".lokinet");
+    return homedir / fs::path(".coinevonet");
   }
 
   fs::path
   GetDefaultConfigPath()
   {
-    return GetDefaultConfigDir() / "lokinet.ini";
+    return GetDefaultConfigDir() / "coinevonet.ini";
   }
 
 }  // namespace llarp
@@ -516,7 +516,7 @@ extern "C" bool
 llarp_ensure_config(const char *fname, const char *basedir, bool overwrite,
                     bool asRouter)
 {
-  if(Lokinet_INIT())
+  if(Coinevonet_INIT())
     return false;
   std::error_code ec;
   if(fs::exists(fname, ec) && !overwrite)
@@ -598,9 +598,9 @@ llarp_generic_ensure_config(std::ofstream &f, std::string basepath,
   f << "# encryption key for onion routing\n";
   f << "encryption-privkey=" << basepath << "encryption.private\n";
   f << std::endl;
-  f << "# uncomment following line to set router nickname to 'lokinet'"
+  f << "# uncomment following line to set router nickname to 'coinevonet'"
     << std::endl;
-  f << "#nickname=lokinet\n";
+  f << "#nickname=coinevonet\n";
   const auto limits = isRouter ? llarp::limits::snode : llarp::limits::client;
 
   f << "# maintain min connections to other routers\n";
@@ -636,9 +636,9 @@ llarp_generic_ensure_config(std::ofstream &f, std::string basepath,
 
   f << "# system settings for privileges and such\n";
   f << "[system]\n";
-  f << "user=" << DEFAULT_LOKINET_USER << std::endl;
-  f << "group=" << DEFAULT_LOKINET_GROUP << std::endl;
-  f << "pidfile=" << basepath << "lokinet.pid\n";
+  f << "user=" << DEFAULT_COINEVONET_USER << std::endl;
+  f << "group=" << DEFAULT_COINEVONET_GROUP << std::endl;
+  f << "pidfile=" << basepath << "coinevonet.pid\n";
   f << "\n\n";
 
   f << "# dns provider configuration section\n";
@@ -681,10 +681,10 @@ llarp_generic_ensure_config(std::ofstream &f, std::string basepath,
 void
 llarp_ensure_router_config(std::ofstream &f, std::string basepath)
 {
-  f << "# lokid settings (disabled by default)\n";
-  f << "[lokid]\n";
+  f << "# coinevod settings (disabled by default)\n";
+  f << "[coinevod]\n";
   f << "enabled=false\n";
-  f << "jsonrpc=127.0.0.1:22023\n";
+  f << "jsonrpc=127.0.0.1:33331\n";
   f << "#service-node-seed=/path/to/servicenode/seed\n";
   f << std::endl;
   f << "# network settings \n";
@@ -740,14 +740,14 @@ llarp_ensure_client_config(std::ofstream &f, std::string basepath)
       if(ip == "")
       {
         llarp::LogError(
-            "Couldn't easily detect a private range to map lokinet onto");
+            "Couldn't easily detect a private range to map coinevonet onto");
         return false;
       }
      */
       example_f << "# this is an example configuration for a snapp\n";
       example_f << "[example-snapp]\n";
       example_f << "# keyfile is the path to the private key of the snapp, "
-                   "your .loki is tied to this key, DON'T LOSE IT\n";
+                   "your .coinevo is tied to this key, DON'T LOSE IT\n";
       example_f << "keyfile=" << basepath << "example-snap-keyfile.private\n";
       example_f << "# ifaddr is the ip range to allocate to this snapp\n";
       example_f << "ifaddr=" << ip << std::endl;

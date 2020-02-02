@@ -41,7 +41,7 @@ namespace llarp
     /// needed.
     struct LOCKABLE NullMutex
     {
-#ifdef LOKINET_DEBUG
+#ifdef COINEVONET_DEBUG
       /// in debug mode, we implement lock() to enforce that any lock is only
       /// used from a single thread. the point of this is to identify locks that
       /// are actually needed by dying a painful death when used across threads
@@ -162,16 +162,16 @@ namespace llarp
       template < typename F >
       void
       TryAccess(F visit) const
-#if defined(LOKINET_DEBUG)
+#if defined(COINEVONET_DEBUG)
           LOCKS_EXCLUDED(_access)
 #endif
       {
-#if defined(LOKINET_DEBUG)
+#if defined(COINEVONET_DEBUG)
         NullLock lock(&_access);
 #endif
         visit();
       }
-#if defined(LOKINET_DEBUG)
+#if defined(COINEVONET_DEBUG)
      private:
       mutable NullMutex _access;
 #endif

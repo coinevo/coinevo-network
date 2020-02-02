@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <installer-gui-script minSpecVersion="1">
-  <title>Lokinet</title>
-  <organization>network.loki</organization>
+  <title>Coinevonet</title>
+  <organization>network.coinevo</organization>
   <domains enable_localSystem="true"/>
   <options customize="never" require-scripts="true" rootVolumeOnly="true" />
   <!-- Define documents displayed at various steps -->
@@ -9,21 +9,21 @@
   <license    file="license.html"    mime-type="text/html" />
   <conclusion file="conclusion.html" mime-type="text/html" />
   <!-- List all component packages -->
-  <pkg-ref id="network.loki.lokinet"
+  <pkg-ref id="network.coinevo.coinevonet"
            version="0.5"
-           auth="root">lokinet.pkg</pkg-ref>
+           auth="root">coinevonet.pkg</pkg-ref>
   <!-- List them again here. They can now be organized
        as a hierarchy if you want. -->
   <choices-outline>
-    <line choice="network.loki.lokinet"/>
+    <line choice="network.coinevo.coinevonet"/>
   </choices-outline>
   <!-- Define each choice above -->
   <choice
-      id="network.loki.lokinet"
+      id="network.coinevo.coinevonet"
       visible="false"
-      title="Lokinet"
-      description='Lokinet is a free, open source, private, decentralized, \"market based sybil resistant\" and IP based onion routing network'
+      title="Coinevonet"
+      description='Coinevonet is a free, open source, private, decentralized, \"market based sybil resistant\" and IP based onion routing network'
       start_selected="true">
-    <pkg-ref id="network.loki.lokinet"/>
+    <pkg-ref id="network.coinevo.coinevonet"/>
   </choice>
 </installer-gui-script>

@@ -1,13 +1,13 @@
 //
-//  lokinetUITests.swift
-//  lokinetUITests
+//  coinevonetUITests.swift
+//  coinevonetUITests
 //
-//  Copyright © 2019 Loki. All rights reserved.
+//  Copyright © 2019 Coinevo. All rights reserved.
 //
 
 import XCTest
 
-class lokinetUITests: XCTestCase {
+class coinevonetUITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -1,4 +1,4 @@
-from pylokinet import bencode
+from pycoinevonet import bencode
 import pysodium
 import binascii
 import time

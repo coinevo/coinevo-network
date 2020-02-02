@@ -1,27 +1,27 @@
 //
-//  LokinetRunner.swift
-//  lokinet
+//  CoinevonetRunner.swift
+//  coinevonet
 //
-//  Copyright © 2019 Loki. All rights reserved.
+//  Copyright © 2019 Coinevo. All rights reserved.
 //
 
 import Foundation
 import Cocoa
 
-class LokinetRunner {
+class CoinevonetRunner {
     let dnsManager: DNSManager
-    let lokinetPath: URL
+    let coinevonetPath: URL
     var process = Process()
 
     var logAppender: Appendable? = nil
 
     init(interface: String, path: String) {
-        self.lokinetPath = URL(fileURLWithPath: path)
+        self.coinevonetPath = URL(fileURLWithPath: path)
         self.dnsManager = DNSManager(interface: interface)
     }
 
     func start() {
-        process.executableURL = self.lokinetPath
+        process.executableURL = self.coinevonetPath
         process.arguments = ["--colour=false"]
         let outputPipe = Pipe()
         process.standardOutput = outputPipe
@@ -35,7 +35,7 @@ class LokinetRunner {
         }
 
         guard let reader = StreamReader(fh: outputPipe.fileHandleForReading) else {
-            let err = NSError(domain: "lokinet", code: 0, userInfo: ["msg": "Failed to read from filehandle"])
+            let err = NSError(domain: "coinevonet", code: 0, userInfo: ["msg": "Failed to read from filehandle"])
             NSApp.presentError(err)
             return
         }

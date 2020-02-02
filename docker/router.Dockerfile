@@ -8,13 +8,13 @@ WORKDIR /src/
 COPY . /src/
 
 RUN make NINJA=ninja STATIC_LINK=ON BUILD_TYPE=Release
-RUN ./lokinet-bootstrap ${bootstrap}
+RUN ./coinevonet-bootstrap ${bootstrap}
 
 FROM alpine:latest
 
-COPY lokinet-docker.ini /root/.lokinet/lokinet.ini
-COPY --from=builder /src/build/daemon/lokinet .
-COPY --from=builder /root/.lokinet/bootstrap.signed /root/.lokinet/
+COPY coinevonet-docker.ini /root/.coinevonet/coinevonet.ini
+COPY --from=builder /src/build/daemon/coinevonet .
+COPY --from=builder /root/.coinevonet/bootstrap.signed /root/.coinevonet/
 
-CMD ["./lokinet"]
+CMD ["./coinevonet"]
 EXPOSE 1090/udp 1190/tcp

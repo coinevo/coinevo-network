@@ -87,7 +87,7 @@ namespace llarp
     LogLevel startupLevel = eLogInfo;
     LogLevel runtimeLevel = eLogWarn;
     ILogStream_ptr logStream;
-    std::string nodeName = "lokinet";
+    std::string nodeName = "coinevonet";
 
     const llarp_time_t started;
 
@@ -236,7 +236,7 @@ namespace llarp
 #endif
 #else
     {
-      tag = "LOKINET|" + tag;
+      tag = "COINEVONET|" + tag;
       __android_log_write(loglev, tag.c_str(), ss.str().c_str());
     }
 #endif

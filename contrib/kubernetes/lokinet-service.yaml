@@ -1,12 +1,12 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: lokinet
+  name: coinevonet
   labels:
-    app: lokinet
+    app: coinevonet
 spec:
   selector:
-    app: lokinet
+    app: coinevonet
   ports:
   - protocol: UDP
     port: 1090

@@ -48,7 +48,7 @@ namespace llarp
       whitelistRouters.emplace(router);
     }
 
-    LogInfo("lokinet service node list now has ", whitelistRouters.size(),
+    LogInfo("coinevonet service node list now has ", whitelistRouters.size(),
             " routers");
   }
 

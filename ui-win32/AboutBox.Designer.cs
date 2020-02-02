@@ -1,4 +1,4 @@
-﻿namespace network.loki.lokinet.win32.ui
+﻿namespace network.coinevo.coinevonet.win32.ui
 {
     partial class AboutBox
     {

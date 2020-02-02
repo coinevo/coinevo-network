@@ -1,12 +1,12 @@
-#include "network_loki_lokinet_LokinetDaemon.h"
-#include "lokinet_jni_common.hpp"
-#include "lokinet_jni_vpnio.hpp"
+#include "network_coinevo_coinevonet_CoinevonetDaemon.h"
+#include "coinevonet_jni_common.hpp"
+#include "coinevonet_jni_vpnio.hpp"
 #include <llarp.h>
 
 extern "C"
 {
   JNIEXPORT jobject JNICALL
-  Java_network_loki_lokinet_LokinetDaemon_Obtain(JNIEnv *env, jclass)
+  Java_network_coinevo_coinevonet_CoinevonetDaemon_Obtain(JNIEnv *env, jclass)
   {
     llarp_main *ptr = llarp_main_default_init();
     if(ptr == nullptr)
@@ -15,14 +15,14 @@ extern "C"
   }
 
   JNIEXPORT void JNICALL
-  Java_network_loki_lokinet_LokinetDaemon_Free(JNIEnv *env, jclass, jobject buf)
+  Java_network_coinevo_coinevonet_CoinevonetDaemon_Free(JNIEnv *env, jclass, jobject buf)
   {
     llarp_main *ptr = FromBuffer< llarp_main >(env, buf);
     llarp_main_free(ptr);
   }
 
   JNIEXPORT jboolean JNICALL
-  Java_network_loki_lokinet_LokinetDaemon_Configure(JNIEnv *env, jobject self,
+  Java_network_coinevo_coinevonet_CoinevonetDaemon_Configure(JNIEnv *env, jobject self,
                                                     jobject conf)
   {
     llarp_main *ptr      = GetImpl< llarp_main >(env, self);
@@ -35,7 +35,7 @@ extern "C"
   }
 
   JNIEXPORT jint JNICALL
-  Java_network_loki_lokinet_LokinetDaemon_Mainloop(JNIEnv *env, jobject self)
+  Java_network_coinevo_coinevonet_CoinevonetDaemon_Mainloop(JNIEnv *env, jobject self)
   {
     static llarp_main_runtime_opts opts;
     llarp_main *ptr = GetImpl< llarp_main >(env, self);
@@ -45,7 +45,7 @@ extern "C"
   }
 
   JNIEXPORT jboolean JNICALL
-  Java_network_loki_lokinet_LokinetDaemon_IsRunning(JNIEnv *env, jobject self)
+  Java_network_coinevo_coinevonet_CoinevonetDaemon_IsRunning(JNIEnv *env, jobject self)
   {
     llarp_main *ptr = GetImpl< llarp_main >(env, self);
     return (ptr != nullptr && llarp_main_is_running(ptr)) ? JNI_TRUE
@@ -53,7 +53,7 @@ extern "C"
   }
 
   JNIEXPORT jboolean JNICALL
-  Java_network_loki_lokinet_LokinetDaemon_Stop(JNIEnv *env, jobject self)
+  Java_network_coinevo_coinevonet_CoinevonetDaemon_Stop(JNIEnv *env, jobject self)
   {
     llarp_main *ptr = GetImpl< llarp_main >(env, self);
     if(ptr == nullptr)
@@ -65,11 +65,11 @@ extern "C"
   }
 
   JNIEXPORT jboolean JNICALL
-  Java_network_loki_lokinet_LokinetDaemon_InjectVPN(JNIEnv *env, jobject self,
+  Java_network_coinevo_coinevonet_CoinevonetDaemon_InjectVPN(JNIEnv *env, jobject self,
                                                     jobject vpn)
   {
     llarp_main *ptr         = GetImpl< llarp_main >(env, self);
-    lokinet_jni_vpnio *impl = GetImpl< lokinet_jni_vpnio >(env, vpn);
+    coinevonet_jni_vpnio *impl = GetImpl< coinevonet_jni_vpnio >(env, vpn);
     if(ptr == nullptr || impl == nullptr)
       return JNI_FALSE;
     if(impl->info.netmask == 0)

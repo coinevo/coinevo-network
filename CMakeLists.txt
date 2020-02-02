@@ -5,7 +5,7 @@ if(CCACHE_PROGRAM)
   set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
 endif()
 
-set(PROJECT_NAME lokinet)
+set(PROJECT_NAME coinevonet)
 project(${PROJECT_NAME} C CXX)
 
 # Core options
@@ -111,7 +111,7 @@ endif(XSAN)
 
 if(CMAKE_BUILD_TYPE MATCHES "[Dd][Ee][Bb][Uu][Gg]")
   set(OPTIMIZE_FLAGS "")
-  add_definitions(-DLOKINET_DEBUG=1)
+  add_definitions(-DCOINEVONET_DEBUG=1)
   set(CRYPTO_FLAGS "")
   add_compile_options( ${DEBUG_FLAGS} )
   link_libraries( ${DEBUG_FLAGS} )
@@ -230,7 +230,7 @@ endif()
 
 if(VENDOR_FILESYSTEM)
   include_directories("${CMAKE_CURRENT_LIST_DIR}/vendor/ghc-filesystem/include")
-  add_definitions(-DLOKINET_USE_GHC_FILESYSTEM)
+  add_definitions(-DCOINEVONET_USE_GHC_FILESYSTEM)
   message(STATUS "Using vendored ghc::filesystem")
 endif()
 

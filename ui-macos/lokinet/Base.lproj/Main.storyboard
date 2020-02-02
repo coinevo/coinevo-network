@@ -11,11 +11,11 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="lokinet" id="1Xt-HY-uBw">
+                            <menuItem title="coinevonet" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="lokinet" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="coinevonet" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About lokinet" id="5kV-Vb-QxS">
+                                        <menuItem title="About coinevonet" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
@@ -33,7 +33,7 @@
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Hide lokinet" keyEquivalent="h" id="Olw-nP-bQN">
+                                        <menuItem title="Hide coinevonet" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
@@ -51,7 +51,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit lokinet" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit coinevonet" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -101,7 +101,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="lokinet Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="coinevonet Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
@@ -115,16 +115,16 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="lokinet" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="coinevonet" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="123" y="-201"/>
         </scene>
-        <!--lokinet-->
+        <!--coinevonet-->
         <scene sceneID="KyO-ZK-znh">
             <objects>
-                <viewController title="lokinet" storyboardIdentifier="LokinetLogController" id="Bom-14-aTM" customClass="LokinetLogController" customModule="lokinet" sceneMemberID="viewController">
+                <viewController title="coinevonet" storyboardIdentifier="CoinevonetLogController" id="Bom-14-aTM" customClass="CoinevonetLogController" customModule="coinevonet" sceneMemberID="viewController">
                     <view key="view" id="vMu-xc-OqT">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -136,7 +136,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" id="Iv9-j0-Ji1" customClass="LokinetLog" customModule="lokinet" customModuleProvider="target">
+                                        <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" id="Iv9-j0-Ji1" customClass="CoinevonetLog" customModule="coinevonet" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -165,7 +165,7 @@
         <!--Preferences-->
         <scene sceneID="DWQ-D6-m8l">
             <objects>
-                <viewController title="Preferences" id="I5t-b2-LMF" customClass="PrefsViewController" customModule="lokinet" sceneMemberID="viewController">
+                <viewController title="Preferences" id="I5t-b2-LMF" customClass="PrefsViewController" customModule="coinevonet" sceneMemberID="viewController">
                     <view key="view" id="KZz-Tr-Jig">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,7 +184,7 @@
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NuC-QX-tDB">
                                             <rect key="frame" x="18" y="269" width="414" height="17"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Lokinet Path" id="J0z-ru-wAJ">
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Coinevonet Path" id="J0z-ru-wAJ">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -199,7 +199,7 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <comboBox identifier="lokinetInterface" verticalHuggingPriority="750" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="S5U-xg-7pX">
+                                        <comboBox identifier="coinevonetInterface" verticalHuggingPriority="750" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="S5U-xg-7pX">
                                             <rect key="frame" x="20" y="169" width="413" height="26"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" numberOfVisibleItems="7" id="f1D-GI-o0g">

@@ -1,4 +1,4 @@
-ARG LOKINET_NETID=docker
+ARG COINEVONET_NETID=docker
 
 FROM alpine:edge as builder
 
@@ -12,5 +12,5 @@ RUN make NINJA=ninja STATIC_LINK=ON BUILD_TYPE=Release
 
 FROM alpine:latest
 
-COPY --from=builder /src/build/daemon/lokinet /
-COPY --from=builder /src/build/daemon/lokinet-ctl /
+COPY --from=builder /src/build/daemon/coinevonet /
+COPY --from=builder /src/build/daemon/coinevonet-ctl /

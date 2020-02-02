@@ -58,7 +58,7 @@ namespace llarp
     // wrap the function so that we ensure that it's always calling stuff one at
     // a time
 
-#if defined(LOKINET_DEBUG)
+#if defined(COINEVONET_DEBUG)
 #define METRIC(action)                                         \
   metrics::integerTick("logic", action, 1, "tag", TAG, "line", \
                        std::to_string(LINE))
@@ -71,7 +71,7 @@ namespace llarp
 
     METRIC("queue");
     auto f = [self = this, func, tag, line]() {
-#if defined(LOKINET_DEBUG)
+#if defined(COINEVONET_DEBUG)
       metrics::TimerGuard g("logic",
                             std::string(TAG) + ":" + std::to_string(LINE));
 #endif

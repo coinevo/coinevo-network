@@ -1,5 +1,5 @@
-#ifndef LOKINET_JNI_VPNIO_HPP
-#define LOKINET_JNI_VPNIO_HPP
+#ifndef COINEVONET_JNI_VPNIO_HPP
+#define COINEVONET_JNI_VPNIO_HPP
 
 #include <llarp.h>
 #include <memory>
@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <jni.h>
 
-namespace lokinet
+namespace coinevonet
 {
   struct VPNIO
   {
@@ -127,9 +127,9 @@ namespace lokinet
       std::copy_n(val.data(), sz, info.ifaddr);
     }
   };
-}  // namespace lokinet
+}  // namespace coinevonet
 
-struct lokinet_jni_vpnio : public lokinet::VPNIO
+struct coinevonet_jni_vpnio : public coinevonet::VPNIO
 {
   void
   InjectSuccess() override

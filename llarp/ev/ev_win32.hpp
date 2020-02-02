@@ -105,7 +105,7 @@ struct win32_tun_io
 // EXTREMELY CURSED libuv event loop and its llarp_vpn_io_pipe
 //
 // For you see, on Windows, we have enough local user permissions to set
-// up a VPN tunnel interface internally, and have lokinet consume this
+// up a VPN tunnel interface internally, and have coinevonet consume this
 // file descriptor directly. See win32_tun_io for this impl. llarp_vpn_io
 // assumes that an external entity or process is required to inject packets
 // into the VPN interface provided by the OS.

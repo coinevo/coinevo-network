@@ -1,8 +1,8 @@
 REM set up config
-lokinet -g
+coinevonet -g
 
 REM bootstrap network
-lokinet-bootstrap
+coinevonet-bootstrap
 
-REM run lokinet
-lokinet
+REM run coinevonet
+coinevonet

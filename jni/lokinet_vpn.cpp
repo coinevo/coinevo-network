@@ -1,35 +1,35 @@
-#include "network_loki_lokinet_LokinetVPN.h"
-#include "lokinet_jni_vpnio.hpp"
-#include "lokinet_jni_common.hpp"
+#include "network_coinevo_coinevonet_CoinevonetVPN.h"
+#include "coinevonet_jni_vpnio.hpp"
+#include "coinevonet_jni_common.hpp"
 #include <net/ip.hpp>
 
 extern "C"
 {
   JNIEXPORT jint JNICALL
-  Java_network_loki_lokinet_LokinetVPN_PacketSize(JNIEnv *, jclass)
+  Java_network_coinevo_coinevonet_CoinevonetVPN_PacketSize(JNIEnv *, jclass)
   {
     return llarp::net::IPPacket::MaxSize;
   }
 
   JNIEXPORT jobject JNICALL
-  Java_network_loki_lokinet_LokinetVPN_Alloc(JNIEnv *env, jclass)
+  Java_network_coinevo_coinevonet_CoinevonetVPN_Alloc(JNIEnv *env, jclass)
   {
-    lokinet_jni_vpnio *vpn = new lokinet_jni_vpnio();
-    return env->NewDirectByteBuffer(vpn, sizeof(lokinet_jni_vpnio));
+    coinevonet_jni_vpnio *vpn = new coinevonet_jni_vpnio();
+    return env->NewDirectByteBuffer(vpn, sizeof(coinevonet_jni_vpnio));
   }
 
   JNIEXPORT void JNICALL
-  Java_network_loki_lokinet_LokinetVPN_Free(JNIEnv *env, jclass, jobject buf)
+  Java_network_coinevo_coinevonet_CoinevonetVPN_Free(JNIEnv *env, jclass, jobject buf)
   {
-    lokinet_jni_vpnio *vpn = FromBuffer< lokinet_jni_vpnio >(env, buf);
+    coinevonet_jni_vpnio *vpn = FromBuffer< coinevonet_jni_vpnio >(env, buf);
     if(vpn == nullptr)
       return;
     delete vpn;
   }
   JNIEXPORT void JNICALL
-  Java_network_loki_lokinet_LokinetVPN_Stop(JNIEnv *env, jobject self)
+  Java_network_coinevo_coinevonet_CoinevonetVPN_Stop(JNIEnv *env, jobject self)
   {
-    lokinet_jni_vpnio *vpn = GetImpl< lokinet_jni_vpnio >(env, self);
+    coinevonet_jni_vpnio *vpn = GetImpl< coinevonet_jni_vpnio >(env, self);
     if(vpn)
     {
       vpn->Close();
@@ -37,10 +37,10 @@ extern "C"
   }
 
   JNIEXPORT jint JNICALL
-  Java_network_loki_lokinet_LokinetVPN_ReadPkt(JNIEnv *env, jobject self,
+  Java_network_coinevo_coinevonet_CoinevonetVPN_ReadPkt(JNIEnv *env, jobject self,
                                                jobject pkt)
   {
-    lokinet_jni_vpnio *vpn = GetImpl< lokinet_jni_vpnio >(env, self);
+    coinevonet_jni_vpnio *vpn = GetImpl< coinevonet_jni_vpnio >(env, self);
     if(vpn == nullptr)
       return -1;
     void *pktbuf = env->GetDirectBufferAddress(pkt);
@@ -51,10 +51,10 @@ extern "C"
   }
 
   JNIEXPORT jboolean JNICALL
-  Java_network_loki_lokinet_LokinetVPN_WritePkt(JNIEnv *env, jobject self,
+  Java_network_coinevo_coinevonet_CoinevonetVPN_WritePkt(JNIEnv *env, jobject self,
                                                 jobject pkt)
   {
-    lokinet_jni_vpnio *vpn = GetImpl< lokinet_jni_vpnio >(env, self);
+    coinevonet_jni_vpnio *vpn = GetImpl< coinevonet_jni_vpnio >(env, self);
     if(vpn == nullptr)
       return false;
     void *pktbuf = env->GetDirectBufferAddress(pkt);
@@ -65,10 +65,10 @@ extern "C"
   }
 
   JNIEXPORT void JNICALL
-  Java_network_loki_lokinet_LokinetVPN_SetInfo(JNIEnv *env, jobject self,
+  Java_network_coinevo_coinevonet_CoinevonetVPN_SetInfo(JNIEnv *env, jobject self,
                                                jobject info)
   {
-    lokinet_jni_vpnio *vpn = GetImpl< lokinet_jni_vpnio >(env, self);
+    coinevonet_jni_vpnio *vpn = GetImpl< coinevonet_jni_vpnio >(env, self);
     if(vpn == nullptr)
       return;
     VisitObjectMemberStringAsStringView< bool >(

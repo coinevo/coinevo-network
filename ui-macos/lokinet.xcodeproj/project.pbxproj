@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B28BD1A232EA8B40073B955 /* DNSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B28BD19232EA8B40073B955 /* DNSManager.swift */; };
-		7B28BD1C232EB6EF0073B955 /* LokinetRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B28BD1B232EB6EF0073B955 /* LokinetRunner.swift */; };
+		7B28BD1C232EB6EF0073B955 /* CoinevonetRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B28BD1B232EB6EF0073B955 /* CoinevonetRunner.swift */; };
 		7BA4FB642340D5940098E20A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA4FB632340D5940098E20A /* Preferences.swift */; };
 		7BA4FB662340DA820098E20A /* StatusMenuExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA4FB652340DA820098E20A /* StatusMenuExt.swift */; };
 		7BA4FB6C2340F2270098E20A /* WindowsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA4FB6B2340F2270098E20A /* WindowsManager.swift */; };
@@ -17,9 +17,9 @@
 		7BED5B7A232D78D900DF603F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED5B79232D78D900DF603F /* AppDelegate.swift */; };
 		7BED5B7E232D78DB00DF603F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BED5B7D232D78DB00DF603F /* Assets.xcassets */; };
 		7BED5B81232D78DB00DF603F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BED5B7F232D78DB00DF603F /* Main.storyboard */; };
-		7BED5B8D232D78DB00DF603F /* lokinetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED5B8C232D78DB00DF603F /* lokinetTests.swift */; };
-		7BED5B98232D78DB00DF603F /* lokinetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED5B97232D78DB00DF603F /* lokinetUITests.swift */; };
-		7BED5BA6232E7E6600DF603F /* LokinetLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED5BA5232E7E6600DF603F /* LokinetLog.swift */; };
+		7BED5B8D232D78DB00DF603F /* coinevonetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED5B8C232D78DB00DF603F /* coinevonetTests.swift */; };
+		7BED5B98232D78DB00DF603F /* coinevonetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED5B97232D78DB00DF603F /* coinevonetUITests.swift */; };
+		7BED5BA6232E7E6600DF603F /* CoinevonetLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED5BA5232E7E6600DF603F /* CoinevonetLog.swift */; };
 		7BED5BA8232E831B00DF603F /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED5BA7232E831B00DF603F /* StreamReader.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,38 +29,38 @@
 			containerPortal = 7BED5B6E232D78D900DF603F /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7BED5B75232D78D900DF603F;
-			remoteInfo = lokinet;
+			remoteInfo = coinevonet;
 		};
 		7BED5B94232D78DB00DF603F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7BED5B6E232D78D900DF603F /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7BED5B75232D78D900DF603F;
-			remoteInfo = lokinet;
+			remoteInfo = coinevonet;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7B28BD19232EA8B40073B955 /* DNSManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNSManager.swift; sourceTree = "<group>"; };
-		7B28BD1B232EB6EF0073B955 /* LokinetRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LokinetRunner.swift; sourceTree = "<group>"; };
+		7B28BD1B232EB6EF0073B955 /* CoinevonetRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinevonetRunner.swift; sourceTree = "<group>"; };
 		7BA4FB632340D5940098E20A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		7BA4FB652340DA820098E20A /* StatusMenuExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuExt.swift; sourceTree = "<group>"; };
 		7BA4FB6B2340F2270098E20A /* WindowsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsManager.swift; sourceTree = "<group>"; };
 		7BA4FB6E23411FF60098E20A /* PrefsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefsViewController.swift; sourceTree = "<group>"; };
 		7BA4FB7223412D700098E20A /* Interfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interfaces.swift; sourceTree = "<group>"; };
-		7BED5B76232D78D900DF603F /* lokinet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lokinet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BED5B76232D78D900DF603F /* coinevonet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = coinevonet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BED5B79232D78D900DF603F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BED5B7D232D78DB00DF603F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7BED5B80232D78DB00DF603F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7BED5B82232D78DB00DF603F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7BED5B83232D78DB00DF603F /* lokinet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lokinet.entitlements; sourceTree = "<group>"; };
-		7BED5B88232D78DB00DF603F /* lokinetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lokinetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BED5B8C232D78DB00DF603F /* lokinetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lokinetTests.swift; sourceTree = "<group>"; };
+		7BED5B83232D78DB00DF603F /* coinevonet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = coinevonet.entitlements; sourceTree = "<group>"; };
+		7BED5B88232D78DB00DF603F /* coinevonetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = coinevonetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BED5B8C232D78DB00DF603F /* coinevonetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coinevonetTests.swift; sourceTree = "<group>"; };
 		7BED5B8E232D78DB00DF603F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7BED5B93232D78DB00DF603F /* lokinetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lokinetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BED5B97232D78DB00DF603F /* lokinetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lokinetUITests.swift; sourceTree = "<group>"; };
+		7BED5B93232D78DB00DF603F /* coinevonetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = coinevonetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BED5B97232D78DB00DF603F /* coinevonetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coinevonetUITests.swift; sourceTree = "<group>"; };
 		7BED5B99232D78DB00DF603F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7BED5BA5232E7E6600DF603F /* LokinetLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LokinetLog.swift; sourceTree = "<group>"; };
+		7BED5BA5232E7E6600DF603F /* CoinevonetLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinevonetLog.swift; sourceTree = "<group>"; };
 		7BED5BA7232E831B00DF603F /* StreamReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,9 +93,9 @@
 			isa = PBXGroup;
 			children = (
 				7BA4FB6B2340F2270098E20A /* WindowsManager.swift */,
-				7BED5B78232D78D900DF603F /* lokinet */,
-				7BED5B8B232D78DB00DF603F /* lokinetTests */,
-				7BED5B96232D78DB00DF603F /* lokinetUITests */,
+				7BED5B78232D78D900DF603F /* coinevonet */,
+				7BED5B8B232D78DB00DF603F /* coinevonetTests */,
+				7BED5B96232D78DB00DF603F /* coinevonetUITests */,
 				7BED5B77232D78D900DF603F /* Products */,
 				7BED5BA9232E993E00DF603F /* Frameworks */,
 			);
@@ -104,14 +104,14 @@
 		7BED5B77232D78D900DF603F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7BED5B76232D78D900DF603F /* lokinet.app */,
-				7BED5B88232D78DB00DF603F /* lokinetTests.xctest */,
-				7BED5B93232D78DB00DF603F /* lokinetUITests.xctest */,
+				7BED5B76232D78D900DF603F /* coinevonet.app */,
+				7BED5B88232D78DB00DF603F /* coinevonetTests.xctest */,
+				7BED5B93232D78DB00DF603F /* coinevonetUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7BED5B78232D78D900DF603F /* lokinet */ = {
+		7BED5B78232D78D900DF603F /* coinevonet */ = {
 			isa = PBXGroup;
 			children = (
 				7BED5B79232D78D900DF603F /* AppDelegate.swift */,
@@ -121,32 +121,32 @@
 				7BED5B7D232D78DB00DF603F /* Assets.xcassets */,
 				7BED5B7F232D78DB00DF603F /* Main.storyboard */,
 				7BED5B82232D78DB00DF603F /* Info.plist */,
-				7BED5B83232D78DB00DF603F /* lokinet.entitlements */,
-				7BED5BA5232E7E6600DF603F /* LokinetLog.swift */,
+				7BED5B83232D78DB00DF603F /* coinevonet.entitlements */,
+				7BED5BA5232E7E6600DF603F /* CoinevonetLog.swift */,
 				7B28BD19232EA8B40073B955 /* DNSManager.swift */,
 				7BED5BA7232E831B00DF603F /* StreamReader.swift */,
-				7B28BD1B232EB6EF0073B955 /* LokinetRunner.swift */,
+				7B28BD1B232EB6EF0073B955 /* CoinevonetRunner.swift */,
 				7BA4FB7223412D700098E20A /* Interfaces.swift */,
 			);
-			path = lokinet;
+			path = coinevonet;
 			sourceTree = "<group>";
 		};
-		7BED5B8B232D78DB00DF603F /* lokinetTests */ = {
+		7BED5B8B232D78DB00DF603F /* coinevonetTests */ = {
 			isa = PBXGroup;
 			children = (
-				7BED5B8C232D78DB00DF603F /* lokinetTests.swift */,
+				7BED5B8C232D78DB00DF603F /* coinevonetTests.swift */,
 				7BED5B8E232D78DB00DF603F /* Info.plist */,
 			);
-			path = lokinetTests;
+			path = coinevonetTests;
 			sourceTree = "<group>";
 		};
-		7BED5B96232D78DB00DF603F /* lokinetUITests */ = {
+		7BED5B96232D78DB00DF603F /* coinevonetUITests */ = {
 			isa = PBXGroup;
 			children = (
-				7BED5B97232D78DB00DF603F /* lokinetUITests.swift */,
+				7BED5B97232D78DB00DF603F /* coinevonetUITests.swift */,
 				7BED5B99232D78DB00DF603F /* Info.plist */,
 			);
-			path = lokinetUITests;
+			path = coinevonetUITests;
 			sourceTree = "<group>";
 		};
 		7BED5BA9232E993E00DF603F /* Frameworks */ = {
@@ -159,9 +159,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7BED5B75232D78D900DF603F /* lokinet */ = {
+		7BED5B75232D78D900DF603F /* coinevonet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7BED5B9C232D78DB00DF603F /* Build configuration list for PBXNativeTarget "lokinet" */;
+			buildConfigurationList = 7BED5B9C232D78DB00DF603F /* Build configuration list for PBXNativeTarget "coinevonet" */;
 			buildPhases = (
 				7BED5B72232D78D900DF603F /* Sources */,
 				7BED5B73232D78D900DF603F /* Frameworks */,
@@ -171,14 +171,14 @@
 			);
 			dependencies = (
 			);
-			name = lokinet;
-			productName = lokinet;
-			productReference = 7BED5B76232D78D900DF603F /* lokinet.app */;
+			name = coinevonet;
+			productName = coinevonet;
+			productReference = 7BED5B76232D78D900DF603F /* coinevonet.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7BED5B87232D78DB00DF603F /* lokinetTests */ = {
+		7BED5B87232D78DB00DF603F /* coinevonetTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7BED5B9F232D78DB00DF603F /* Build configuration list for PBXNativeTarget "lokinetTests" */;
+			buildConfigurationList = 7BED5B9F232D78DB00DF603F /* Build configuration list for PBXNativeTarget "coinevonetTests" */;
 			buildPhases = (
 				7BED5B84232D78DB00DF603F /* Sources */,
 				7BED5B85232D78DB00DF603F /* Frameworks */,
@@ -189,14 +189,14 @@
 			dependencies = (
 				7BED5B8A232D78DB00DF603F /* PBXTargetDependency */,
 			);
-			name = lokinetTests;
-			productName = lokinetTests;
-			productReference = 7BED5B88232D78DB00DF603F /* lokinetTests.xctest */;
+			name = coinevonetTests;
+			productName = coinevonetTests;
+			productReference = 7BED5B88232D78DB00DF603F /* coinevonetTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7BED5B92232D78DB00DF603F /* lokinetUITests */ = {
+		7BED5B92232D78DB00DF603F /* coinevonetUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7BED5BA2232D78DB00DF603F /* Build configuration list for PBXNativeTarget "lokinetUITests" */;
+			buildConfigurationList = 7BED5BA2232D78DB00DF603F /* Build configuration list for PBXNativeTarget "coinevonetUITests" */;
 			buildPhases = (
 				7BED5B8F232D78DB00DF603F /* Sources */,
 				7BED5B90232D78DB00DF603F /* Frameworks */,
@@ -207,9 +207,9 @@
 			dependencies = (
 				7BED5B95232D78DB00DF603F /* PBXTargetDependency */,
 			);
-			name = lokinetUITests;
-			productName = lokinetUITests;
-			productReference = 7BED5B93232D78DB00DF603F /* lokinetUITests.xctest */;
+			name = coinevonetUITests;
+			productName = coinevonetUITests;
+			productReference = 7BED5B93232D78DB00DF603F /* coinevonetUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -220,7 +220,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
-				ORGANIZATIONNAME = Loki;
+				ORGANIZATIONNAME = Coinevo;
 				TargetAttributes = {
 					7BED5B75232D78D900DF603F = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -246,7 +246,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7BED5B71232D78D900DF603F /* Build configuration list for PBXProject "lokinet" */;
+			buildConfigurationList = 7BED5B71232D78D900DF603F /* Build configuration list for PBXProject "coinevonet" */;
 			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -259,9 +259,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7BED5B75232D78D900DF603F /* lokinet */,
-				7BED5B87232D78DB00DF603F /* lokinetTests */,
-				7BED5B92232D78DB00DF603F /* lokinetUITests */,
+				7BED5B75232D78D900DF603F /* coinevonet */,
+				7BED5B87232D78DB00DF603F /* coinevonetTests */,
+				7BED5B92232D78DB00DF603F /* coinevonetUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -299,10 +299,10 @@
 			files = (
 				7BED5BA8232E831B00DF603F /* StreamReader.swift in Sources */,
 				7BA4FB7023411FF60098E20A /* PrefsViewController.swift in Sources */,
-				7BED5BA6232E7E6600DF603F /* LokinetLog.swift in Sources */,
+				7BED5BA6232E7E6600DF603F /* CoinevonetLog.swift in Sources */,
 				7BA4FB662340DA820098E20A /* StatusMenuExt.swift in Sources */,
 				7B28BD1A232EA8B40073B955 /* DNSManager.swift in Sources */,
-				7B28BD1C232EB6EF0073B955 /* LokinetRunner.swift in Sources */,
+				7B28BD1C232EB6EF0073B955 /* CoinevonetRunner.swift in Sources */,
 				7BA4FB6C2340F2270098E20A /* WindowsManager.swift in Sources */,
 				7BA4FB7323412D700098E20A /* Interfaces.swift in Sources */,
 				7BA4FB642340D5940098E20A /* Preferences.swift in Sources */,
@@ -314,7 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BED5B8D232D78DB00DF603F /* lokinetTests.swift in Sources */,
+				7BED5B8D232D78DB00DF603F /* coinevonetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BED5B98232D78DB00DF603F /* lokinetUITests.swift in Sources */,
+				7BED5B98232D78DB00DF603F /* coinevonetUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,12 +331,12 @@
 /* Begin PBXTargetDependency section */
 		7BED5B8A232D78DB00DF603F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7BED5B75232D78D900DF603F /* lokinet */;
+			target = 7BED5B75232D78D900DF603F /* coinevonet */;
 			targetProxy = 7BED5B89232D78DB00DF603F /* PBXContainerItemProxy */;
 		};
 		7BED5B95232D78DB00DF603F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7BED5B75232D78D900DF603F /* lokinet */;
+			target = 7BED5B75232D78D900DF603F /* coinevonet */;
 			targetProxy = 7BED5B94232D78DB00DF603F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -476,19 +476,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = lokinet/lokinet.entitlements;
+				CODE_SIGN_ENTITLEMENTS = coinevonet/coinevonet.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 23TKR8Q2XE;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = lokinet/Info.plist;
+				INFOPLIST_FILE = coinevonet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = loki.lokinet;
+				PRODUCT_BUNDLE_IDENTIFIER = coinevo.coinevonet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -499,19 +499,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = lokinet/lokinet.entitlements;
+				CODE_SIGN_ENTITLEMENTS = coinevonet/coinevonet.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 23TKR8Q2XE;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = lokinet/Info.plist;
+				INFOPLIST_FILE = coinevonet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = loki.lokinet;
+				PRODUCT_BUNDLE_IDENTIFIER = coinevo.coinevonet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -525,16 +525,16 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = lokinetTests/Info.plist;
+				INFOPLIST_FILE = coinevonetTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = loki.lokinetTests;
+				PRODUCT_BUNDLE_IDENTIFIER = coinevo.coinevonetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/lokinet.app/Contents/MacOS/lokinet";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/coinevonet.app/Contents/MacOS/coinevonet";
 			};
 			name = Debug;
 		};
@@ -545,16 +545,16 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = lokinetTests/Info.plist;
+				INFOPLIST_FILE = coinevonetTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = loki.lokinetTests;
+				PRODUCT_BUNDLE_IDENTIFIER = coinevo.coinevonetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/lokinet.app/Contents/MacOS/lokinet";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/coinevonet.app/Contents/MacOS/coinevonet";
 			};
 			name = Release;
 		};
@@ -564,16 +564,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = lokinetUITests/Info.plist;
+				INFOPLIST_FILE = coinevonetUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = loki.lokinetUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = coinevo.coinevonetUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = lokinet;
+				TEST_TARGET_NAME = coinevonet;
 			};
 			name = Debug;
 		};
@@ -583,23 +583,23 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = lokinetUITests/Info.plist;
+				INFOPLIST_FILE = coinevonetUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = loki.lokinetUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = coinevo.coinevonetUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = lokinet;
+				TEST_TARGET_NAME = coinevonet;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7BED5B71232D78D900DF603F /* Build configuration list for PBXProject "lokinet" */ = {
+		7BED5B71232D78D900DF603F /* Build configuration list for PBXProject "coinevonet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7BED5B9A232D78DB00DF603F /* Debug */,
@@ -608,7 +608,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7BED5B9C232D78DB00DF603F /* Build configuration list for PBXNativeTarget "lokinet" */ = {
+		7BED5B9C232D78DB00DF603F /* Build configuration list for PBXNativeTarget "coinevonet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7BED5B9D232D78DB00DF603F /* Debug */,
@@ -617,7 +617,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7BED5B9F232D78DB00DF603F /* Build configuration list for PBXNativeTarget "lokinetTests" */ = {
+		7BED5B9F232D78DB00DF603F /* Build configuration list for PBXNativeTarget "coinevonetTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7BED5BA0232D78DB00DF603F /* Debug */,
@@ -626,7 +626,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7BED5BA2232D78DB00DF603F /* Build configuration list for PBXNativeTarget "lokinetUITests" */ = {
+		7BED5BA2232D78DB00DF603F /* Build configuration list for PBXNativeTarget "coinevonetUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7BED5BA3232D78DB00DF603F /* Debug */,

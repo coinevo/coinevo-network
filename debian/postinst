@@ -1,3 +1,3 @@
 #!/bin/sh -e
-setcap cap_net_admin,cap_net_bind_service=+eip /usr/bin/lokinet || echo "failed to setcap lokinet"
-adduser --quiet --system --home /var/lib/lokinet debian-lokinet || echo "debian-lokinet user not added"
+setcap cap_net_admin,cap_net_bind_service=+eip /usr/bin/coinevonet || echo "failed to setcap coinevonet"
+adduser --quiet --system --home /var/lib/coinevonet debian-coinevonet || echo "debian-coinevonet user not added"

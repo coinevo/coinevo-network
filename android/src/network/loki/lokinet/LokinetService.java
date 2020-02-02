@@ -1,9 +1,9 @@
-package network.loki.lokinet;
+package network.coinevo.coinevonet;
 
 
 import android.net.VpnService;
 
-public class LokinetService extends VpnService
+public class CoinevonetService extends VpnService
 {
     
 }

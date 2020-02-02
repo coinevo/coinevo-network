@@ -116,7 +116,7 @@ namespace llarp
 
     if(!metricsConfig.metricTankHost.empty())
     {
-      if(std::getenv("LOKINET_ENABLE_METRIC_TANK"))
+      if(std::getenv("COINEVONET_ENABLE_METRIC_TANK"))
       {
         static std::string WARNING = R"(
 __        ___    ____  _   _ ___ _   _  ____
@@ -125,7 +125,7 @@ __        ___    ____  _   _ ___ _   _  ____
   \ V  V / ___ \|  _ <| |\  || || |\  | |_| |
    \_/\_/_/   \_\_| \_\_| \_|___|_| \_|\____|
 
-This Lokinet session is not private!!
+This Coinevonet session is not private!!
 
 Sending connection metrics to metrictank!!
 __        ___    ____  _   _ ___ _   _  ____
@@ -148,7 +148,7 @@ __        ___    ____  _   _ ___ _   _  ____
       else
       {
         std::cerr << "metrictank host specified, but "
-                     "LOKINET_ENABLE_METRIC_TANK not set, skipping\n";
+                     "COINEVONET_ENABLE_METRIC_TANK not set, skipping\n";
       }
     }
 

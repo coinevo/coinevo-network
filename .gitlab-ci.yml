@@ -17,7 +17,7 @@ stages:
 #    - make STATIC_LINK=ON
 #  artifacts:
 #    paths:
-#      - "lokinet"
+#      - "coinevonet"
 
 # we'll just try our travis set up for now
 #build:linux_release:
@@ -31,8 +31,8 @@ stages:
 #    - DOWNLOAD_SODIUM=ON STATIC_LINK=OFF make release
 #  artifacts:
 #    paths:
-#      - "build/daemon/lokinet"
-#      - "build/daemon/lokinetctl"
+#      - "build/daemon/coinevonet"
+#      - "build/daemon/coinevonetctl"
 
 build:linux_debug:
   image: ubuntu:xenial
@@ -45,8 +45,8 @@ build:linux_debug:
     - DOWNLOAD_SODIUM=ON IS_NOTIFICATION=1 STATIC_LINK=OFF make
   artifacts:
     paths:
-      - "lokinet"
-      - "lokinetctl"
+      - "coinevonet"
+      - "coinevonetctl"
 
 # needs libsodium (probably libuv and libcurl too)
 #build:freebsd:
@@ -57,7 +57,7 @@ build:linux_debug:
 #    - gmake
 #  artifacts:
 #    paths:
-#      - "lokinet"
+#      - "coinevonet"
 
 #build:windows:
 #  tags:
@@ -67,4 +67,4 @@ build:linux_debug:
 #    - make STATIC_LINK=ON AVX2=OFF JSONRPC=OFF CC=gcc CXX=g++
 #  artifacts:
 #    paths:
-#      - "lokinet.exe"
+#      - "coinevonet.exe"

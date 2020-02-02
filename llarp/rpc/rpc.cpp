@@ -53,10 +53,10 @@ namespace llarp
       PopulateReqHeaders(abyss::http::Headers_t& hdr) override;
     };
 
-    struct LokiPingHandler final : public CallerHandler
+    struct CoinevoPingHandler final : public CallerHandler
     {
-      ~LokiPingHandler() override = default;
-      LokiPingHandler(::abyss::http::ConnImpl* impl, CallerImpl* parent)
+      ~CoinevoPingHandler() override = default;
+      CoinevoPingHandler(::abyss::http::ConnImpl* impl, CallerImpl* parent)
           : CallerHandler(impl, parent)
       {
       }
@@ -65,33 +65,33 @@ namespace llarp
       {
         if(not result.is_object())
         {
-          LogError("invalid result from lokid ping, not an object");
+          LogError("invalid result from coinevod ping, not an object");
           return false;
         }
         const auto itr = result.find("status");
         if(itr == result.end())
         {
-          LogError("invalid result from lokid ping, no result");
+          LogError("invalid result from coinevod ping, no result");
           return false;
         }
         if(not itr->is_string())
         {
-          LogError("invalid result from lokid ping, status not an string");
+          LogError("invalid result from coinevod ping, status not an string");
           return false;
         }
         const auto status = itr->get< std::string >();
         if(status != "OK")
         {
-          LogError("lokid ping failed: '", status, "'");
+          LogError("coinevod ping failed: '", status, "'");
           return false;
         }
-        LogInfo("lokid ping: '", status, "'");
+        LogInfo("coinevod ping: '", status, "'");
         return true;
       }
       void
       HandleError() override
       {
-        LogError("Failed to ping lokid");
+        LogError("Failed to ping coinevod");
       }
     };
 
@@ -185,7 +185,7 @@ namespace llarp
         }
         if(now >= m_NextPing)
         {
-          AsyncLokiPing();
+          AsyncCoinevoPing();
           m_NextPing = now + PingInterval;
         }
         Flush();
@@ -199,13 +199,13 @@ namespace llarp
       }
 
       void
-      AsyncLokiPing()
+      AsyncCoinevoPing()
       {
-        LogInfo("Pinging Lokid");
+        LogInfo("Pinging Coinevod");
         nlohmann::json version(llarp::VERSION);
         nlohmann::json params({{"version", version}});
-        QueueRPC("lokinet_ping", std::move(params),
-                 util::memFn(&CallerImpl::NewLokinetPingConn, this));
+        QueueRPC("coinevonet_ping", std::move(params),
+                 util::memFn(&CallerImpl::NewCoinevonetPingConn, this));
       }
 
       void
@@ -226,9 +226,9 @@ namespace llarp
       }
 
       abyss::http::IRPCClientHandler*
-      NewLokinetPingConn(abyss::http::ConnImpl* impl)
+      NewCoinevonetPingConn(abyss::http::ConnImpl* impl)
       {
-        return new LokiPingHandler(impl, this);
+        return new CoinevoPingHandler(impl, this);
       }
 
       abyss::http::IRPCClientHandler*
@@ -256,7 +256,7 @@ namespace llarp
     void
     CallerHandler::PopulateReqHeaders(abyss::http::Headers_t& hdr)
     {
-      hdr.emplace("User-Agent", "lokinet rpc (YOLO)");
+      hdr.emplace("User-Agent", "coinevonet rpc (YOLO)");
     }
 
     struct Handler : public ::abyss::httpd::IRPCHandler

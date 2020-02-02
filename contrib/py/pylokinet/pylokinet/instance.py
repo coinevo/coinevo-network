@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# lokinet runtime wrapper
+# coinevonet runtime wrapper
 #
 
 from ctypes import *
@@ -12,17 +12,17 @@ import os
 import sys
 import requests
 
-from pylokinet import rc
+from pycoinevonet import rc
 
-lib_file = os.path.join(os.path.realpath('.'), 'liblokinet-shared.so')
+lib_file = os.path.join(os.path.realpath('.'), 'libcoinevonet-shared.so')
 
 
 def log(msg):
-    sys.stderr.write("lokinet: {}\n".format(msg))
+    sys.stderr.write("coinevonet: {}\n".format(msg))
     sys.stderr.flush()
 
 
-class LokiNET(threading.Thread):
+class CoinevoNET(threading.Thread):
 
     lib = None
     ctx = 0
@@ -31,7 +31,7 @@ class LokiNET(threading.Thread):
 
     asRouter = True
 
-    def configure(self, lib, conf, ip=None, port=None, ifname=None, seedfile=None, lokid_host=None, lokid_port=None):
+    def configure(self, lib, conf, ip=None, port=None, ifname=None, seedfile=None, coinevod_host=None, coinevod_port=None):
         log("configure lib={} conf={}".format(lib, conf))
         if not os.path.exists(os.path.dirname(conf)):
             os.mkdir(os.path.dirname(conf))
@@ -43,16 +43,16 @@ class LokiNET(threading.Thread):
         if self.lib.llarp_ensure_config(conf.encode('utf-8'), os.path.dirname(conf).encode('utf-8'), True, self.asRouter):
             config = configparser.ConfigParser()
             config.read(conf)
-            log('overwrite ip="{}" port="{}" ifname="{}" seedfile="{}" lokid=("{}", "{}")'.format(
-                ip, port, ifname, seedfile, lokid_host, lokid_port))
-            if seedfile and lokid_host and lokid_port:
+            log('overwrite ip="{}" port="{}" ifname="{}" seedfile="{}" coinevod=("{}", "{}")'.format(
+                ip, port, ifname, seedfile, coinevod_host, coinevod_port))
+            if seedfile and coinevod_host and coinevod_port:
                 if not os.path.exists(seedfile):
                     log('cannot access service node seed at "{}"'.format(seedfile))
                     return False
-                config['lokid'] = {
+                config['coinevod'] = {
                     'service-node-seed': seedfile,
                     'enabled': "true",
-                    'jsonrpc': "{}:{}".format(lokid_host, lokid_port)
+                    'jsonrpc': "{}:{}".format(coinevod_host, coinevod_port)
                 }
             if ip:
                 config['router']['public-address'] = '{}'.format(ip)
@@ -71,7 +71,7 @@ class LokiNET(threading.Thread):
 
     def inform_fail(self):
         """
-        inform lokinet crashed
+        inform coinevonet crashed
         """
         self.failed = True
         self._inform()
@@ -87,7 +87,7 @@ class LokiNET(threading.Thread):
 
     def wait_for_up(self, timeout):
         """
-        wait for lokinet to go up for :timeout: seconds
+        wait for coinevonet to go up for :timeout: seconds
         :return True if we are up and running otherwise False:
         """
         # return self._up.wait(timeout)
@@ -116,43 +116,43 @@ def getconf(name, fallback=None):
 
 
 def run_main(args):
-    seedfile = getconf("LOKI_SEED_FILE")
+    seedfile = getconf("COINEVO_SEED_FILE")
     if seedfile is None:
-        print("LOKI_SEED_FILE was not set")
+        print("COINEVO_SEED_FILE was not set")
         return
 
-    lokid_host = getconf("LOKI_RPC_HOST", "127.0.0.1")
-    lokid_port = getconf("LOKI_RPC_PORT", "22023")
+    coinevod_host = getconf("COINEVO_RPC_HOST", "127.0.0.1")
+    coinevod_port = getconf("COINEVO_RPC_PORT", "33331")
 
-    root = getconf("LOKINET_ROOT")
+    root = getconf("COINEVONET_ROOT")
     if root is None:
-        print("LOKINET_ROOT was not set")
+        print("COINEVONET_ROOT was not set")
         return
 
-    rc_callback = getconf("LOKINET_SUBMIT_URL")
+    rc_callback = getconf("COINEVONET_SUBMIT_URL")
     if rc_callback is None:
-        print("LOKINET_SUBMIT_URL was not set")
+        print("COINEVONET_SUBMIT_URL was not set")
         return
 
-    bootstrap = getconf("LOKINET_BOOTSTRAP_URL")
+    bootstrap = getconf("COINEVONET_BOOTSTRAP_URL")
     if bootstrap is None:
-        print("LOKINET_BOOTSTRAP_URL was not set")
+        print("COINEVONET_BOOTSTRAP_URL was not set")
 
-    lib = getconf("LOKINET_LIB", lib_file)
+    lib = getconf("COINEVONET_LIB", lib_file)
     if not os.path.exists(lib):
-        lib = "liblokinet-shared.so"
-    timeout = int(getconf("LOKINET_TIMEOUT", "5"))
-    ping_interval = int(getconf("LOKINET_PING_INTERVAL", "60"))
-    ping_callback = getconf("LOKINET_PING_URL")
-    ip = getconf("LOKINET_IP")
-    port = getconf("LOKINET_PORT")
-    ifname = getconf("LOKINET_IFNAME")
+        lib = "libcoinevonet-shared.so"
+    timeout = int(getconf("COINEVONET_TIMEOUT", "5"))
+    ping_interval = int(getconf("COINEVONET_PING_INTERVAL", "60"))
+    ping_callback = getconf("COINEVONET_PING_URL")
+    ip = getconf("COINEVONET_IP")
+    port = getconf("COINEVONET_PORT")
+    ifname = getconf("COINEVONET_IFNAME")
     if ping_callback is None:
-        print("LOKINET_PING_URL was not set")
+        print("COINEVONET_PING_URL was not set")
         return
     conf = os.path.join(root, "daemon.ini")
     log("going up")
-    loki = LokiNET()
+    coinevo = CoinevoNET()
     log("bootstrapping...")
     try:
         r = requests.get(bootstrap)
@@ -170,22 +170,22 @@ def run_main(args):
                 raise Exception("invalid RC")
     except Exception as ex:
         log("failed to bootstrap: {}".format(ex))
-        loki.close()
+        coinevo.close()
         return
-    if loki.configure(lib, conf, ip, port, ifname, seedfile, lokid_host, lokid_port):
+    if coinevo.configure(lib, conf, ip, port, ifname, seedfile, coinevod_host, coinevod_port):
         log("configured")
 
-        loki.start()
+        coinevo.start()
         try:
             log("waiting for spawn")
             while timeout > 0:
                 time.sleep(1)
-                if loki.failed:
+                if coinevo.failed:
                     log("failed")
                     break
                 log("waiting {}".format(timeout))
                 timeout -= 1
-            if loki.up:
+            if coinevo.up:
                 log("submitting rc")
                 try:
                     with open(os.path.join(root, 'self.signed'), 'rb') as f:
@@ -194,10 +194,10 @@ def run_main(args):
                         log('submit rc reply: HTTP {}'.format(r.status_code))
                 except Exception as ex:
                     log("failed to submit rc: {}".format(ex))
-                    loki.signal(signal.SIGINT)
+                    coinevo.signal(signal.SIGINT)
                     time.sleep(2)
                 else:
-                    while loki.up:
+                    while coinevo.up:
                         time.sleep(ping_interval)
                         try:
                             r = requests.get(ping_callback)
@@ -206,14 +206,14 @@ def run_main(args):
                             log("failed to submit ping: {}".format(ex))
             else:
                 log("failed to go up")
-                loki.signal(signal.SIGINT)
+                coinevo.signal(signal.SIGINT)
         except KeyboardInterrupt:
-            loki.signal(signal.SIGINT)
+            coinevo.signal(signal.SIGINT)
             time.sleep(2)
         finally:
-            loki.close()
+            coinevo.close()
     else:
-        loki.close()
+        coinevo.close()
 
 
 def main():

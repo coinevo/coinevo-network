@@ -1,13 +1,13 @@
-#include "lokinet-config.hpp"
+#include "coinevonet-config.hpp"
 #include <fstream>
 #include <list>
 #include <iostream>
 
-namespace lokinet
+namespace coinevonet
 {
   namespace bootserv
   {
-    const char* Config::DefaultPath = "/usr/local/etc/lokinet-bootserv.ini";
+    const char* Config::DefaultPath = "/usr/local/etc/coinevonet-bootserv.ini";
 
     bool
     Config::LoadFile(const char* fname)
@@ -129,4 +129,4 @@ namespace lokinet
     }
 
   }  // namespace bootserv
-}  // namespace lokinet
+}  // namespace coinevonet

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1CDEE73C-29C5-4781-BD74-1EEAC6F75A14}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>network.loki.lokinet.win32.ui</RootNamespace>
-    <AssemblyName>lokinetui</AssemblyName>
+    <RootNamespace>network.coinevo.coinevonet.win32.ui</RootNamespace>
+    <AssemblyName>coinevonetui</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -35,7 +35,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>lokinet.ico</ApplicationIcon>
+    <ApplicationIcon>coinevonet.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -117,7 +117,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lokinet.ico" />
+    <Content Include="coinevonet.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

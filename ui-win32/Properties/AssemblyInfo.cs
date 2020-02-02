@@ -10,13 +10,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Lokinet for Windows")]
-[assembly: AssemblyDescription("Lokinet end-user UI")]
+[assembly: AssemblyTitle("Coinevonet for Windows")]
+[assembly: AssemblyDescription("Coinevonet end-user UI")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Loki Project")]
-[assembly: AssemblyProduct("Lokinet Launcher")]
-[assembly: AssemblyCopyright("Copyright ©2018-2020 Loki Project. All rights reserved. See LICENSE for more details.")]
-[assembly: AssemblyTrademark("Loki, Loki Project, LokiNET are ™ & ©2018-2020 Loki Foundation")]
+[assembly: AssemblyCompany("Coinevo Project")]
+[assembly: AssemblyProduct("Coinevonet Launcher")]
+[assembly: AssemblyCopyright("Copyright ©2018-2020 Coinevo Project. All rights reserved. See LICENSE for more details.")]
+[assembly: AssemblyTrademark("Coinevo, Coinevo Project, CoinevoNET are ™ & ©2018-2020 Coinevo Foundation")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible

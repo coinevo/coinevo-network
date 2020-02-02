@@ -1,6 +1,6 @@
 FROM compose-base:latest
 
-COPY ./docker/compose/client.ini /root/.lokinet/lokinet.ini
+COPY ./docker/compose/client.ini /root/.coinevonet/coinevonet.ini
 
-CMD ["/lokinet"]
+CMD ["/coinevonet"]
 EXPOSE 1090/udp 1190/tcp

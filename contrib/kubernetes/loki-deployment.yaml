@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: loki-deployment
+  name: coinevo-deployment
   labels:
-    app: loki-svc-node
+    app: coinevo-svc-node
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: loki-svc-node
+      app: coinevo-svc-node
   template:
     metadata:
       labels:
-        app: loki-svc-node
+        app: coinevo-svc-node
     spec:
       containers:
-      - name: loki-svc-node
-        image: jaaff/loki-svc-kubernetes
+      - name: coinevo-svc-node
+        image: jaaff/coinevo-svc-kubernetes
         ports:
           - protocol: TCP
-            port: 22022
-            targetPort: 22022
+            port: 33330
+            targetPort: 33330
           - protocol: TCP
-            port: 22023
-            targetPort: 22023
+            port: 33331
+            targetPort: 33331
           - protocol: UDP
             port: 1090
             targetPort: 1090

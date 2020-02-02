@@ -40,7 +40,7 @@ class Monitor:
         return r.json()
 
     def update_data(self):
-        """update data from lokinet"""
+        """update data from coinevonet"""
         try:
             j = self.jsonrpc("llarp.admin.dumpstate", {})
             self.data = j["result"]
@@ -230,7 +230,7 @@ class Monitor:
     def display_data(self):
         """draw main window"""
         if self.data is not None:
-            self.win.addstr(1, 1, "lokinet online")
+            self.win.addstr(1, 1, "coinevonet online")
             # print(self.data)
             services = self.data["services"] or {}
             y = 3
@@ -243,7 +243,7 @@ class Monitor:
                 pass
         else:
             self.win.move(1, 1)
-            self.win.addstr("lokinet offline")
+            self.win.addstr("coinevonet offline")
 
     def run(self):
         while True:

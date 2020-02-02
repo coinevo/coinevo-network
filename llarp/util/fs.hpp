@@ -9,7 +9,7 @@
 #define PATH_SEP "/"
 #endif
 
-#if defined(LOKINET_USE_GHC_FILESYSTEM)
+#if defined(COINEVONET_USE_GHC_FILESYSTEM)
 #include <ghc/filesystem.hpp>
 namespace fs = ghc::filesystem;
 #elif __cplusplus >= 201703L && !defined(_MSC_VER)

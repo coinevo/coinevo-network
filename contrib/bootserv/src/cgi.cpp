@@ -1,10 +1,10 @@
-#include "lokinet-cgi.hpp"
+#include "coinevonet-cgi.hpp"
 #include <fstream>
 #include <dirent.h>
 #include <list>
 #include <sstream>
 
-namespace lokinet
+namespace coinevonet
 {
   namespace bootserv
   {
@@ -168,4 +168,4 @@ namespace lokinet
     }
 
   }  // namespace bootserv
-}  // namespace lokinet
+}  // namespace coinevonet

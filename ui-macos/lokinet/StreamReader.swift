@@ -1,8 +1,8 @@
 //
 //  StreamReader.swift
-//  lokinet
+//  coinevonet
 //
-//  Copyright © 2019 Loki. All rights reserved.
+//  Copyright © 2019 Coinevo. All rights reserved.
 //
 
 import Foundation

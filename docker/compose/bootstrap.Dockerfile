@@ -1,8 +1,8 @@
 FROM compose-base:latest
 
-ENV LOKINET_NETID=docker
+ENV COINEVONET_NETID=docker
 
-COPY ./docker/compose/bootstrap.ini /root/.lokinet/lokinet.ini
+COPY ./docker/compose/bootstrap.ini /root/.coinevonet/coinevonet.ini
 
-CMD ["/lokinet"]
+CMD ["/coinevonet"]
 EXPOSE 1090/udp 1190/tcp

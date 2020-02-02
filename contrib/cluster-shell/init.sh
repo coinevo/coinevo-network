@@ -1,9 +1,9 @@
 #!/bin/sh
-# copy a lokinet binary into this cluster
-cp ../../lokinet .
+# copy a coinevonet binary into this cluster
+cp ../../coinevonet .
 # generate default config file
-./lokinet -g -r lokinet.ini
+./coinevonet -g -r coinevonet.ini
 # make seed node
 ./makenode.sh 1
 # establish bootstrap
-ln -s loki1/self.signed bootstrap.signed
+ln -s coinevo1/self.signed bootstrap.signed

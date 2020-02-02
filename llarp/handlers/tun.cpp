@@ -224,7 +224,7 @@ namespace llarp
         {
           llarp::LogError("Cannot map address ", v,
                           " invalid format, missing colon (:), expects "
-                          "address.loki:ip.address.goes.here");
+                          "address.coinevo:ip.address.goes.here");
           return false;
         }
         service::Address addr;
@@ -343,9 +343,9 @@ namespace llarp
     }
 
     static bool
-    is_localhost_loki(const dns::Message &msg)
+    is_localhost_coinevo(const dns::Message &msg)
     {
-      return msg.questions[0].IsName("localhost.loki");
+      return msg.questions[0].IsName("localhost.coinevo");
     }
 
     template <>
@@ -390,8 +390,8 @@ namespace llarp
       {
         // mx record
         service::Address addr;
-        if(addr.FromString(qname, ".loki") || addr.FromString(qname, ".snode")
-           || is_random_snode(msg) || is_localhost_loki(msg))
+        if(addr.FromString(qname, ".coinevo") || addr.FromString(qname, ".snode")
+           || is_random_snode(msg) || is_localhost_coinevo(msg))
           msg.AddMXReply(qname, 1);
         else
           msg.AddNXReply();
@@ -407,7 +407,7 @@ namespace llarp
           else
             msg.AddNXReply();
         }
-        else if(is_localhost_loki(msg))
+        else if(is_localhost_coinevo(msg))
         {
           size_t counter = 0;
           context->ForEachService(
@@ -441,7 +441,7 @@ namespace llarp
           else
             msg.AddNXReply();
         }
-        else if(is_localhost_loki(msg))
+        else if(is_localhost_coinevo(msg))
         {
           size_t counter = 0;
           context->ForEachService(
@@ -460,7 +460,7 @@ namespace llarp
           if(counter == 0)
             msg.AddNXReply();
         }
-        else if(addr.FromString(qname, ".loki"))
+        else if(addr.FromString(qname, ".coinevo"))
         {
           if(isV4 && SupportsV6())
           {
@@ -523,10 +523,10 @@ namespace llarp
           reply(msg);
           return true;
         }
-        service::Address lokiAddr;
-        if(FindAddrForIP(lokiAddr, ip))
+        service::Address coinevoAddr;
+        if(FindAddrForIP(coinevoAddr, ip))
         {
-          msg.AddAReply(lokiAddr.ToString());
+          msg.AddAReply(coinevoAddr.ToString());
           reply(msg);
           return true;
         }
@@ -563,8 +563,8 @@ namespace llarp
       llarp::service::Address addr;
       if(msg.questions.size() == 1)
       {
-        /// hook every .loki
-        if(msg.questions[0].HasTLD(".loki"))
+        /// hook every .coinevo
+        if(msg.questions[0].HasTLD(".coinevo"))
           return true;
         /// hook every .snode
         if(msg.questions[0].HasTLD(".snode"))
@@ -669,7 +669,7 @@ namespace llarp
             /// get packets from vpn
             while(not impl->writer.queue.empty())
             {
-              // queue it to be sent over lokinet
+              // queue it to be sent over coinevonet
               auto pkt = impl->writer.queue.popFront();
               if(running)
                 ep->m_UserToNetworkPktQueue.Emplace(pkt);

@@ -1,3 +1,3 @@
 #!/bin/sh
-rm -fr loki*/tmp-nodes
-rm  loki*/profile.dat
+rm -fr coinevo*/tmp-nodes
+rm  coinevo*/profile.dat

@@ -14,7 +14,7 @@ const {
 
 // FIXME: disable rpc if desired
 const VERSION = 0.6
-console.log('lokinet launcher version', VERSION, 'registered')
+console.log('coinevonet launcher version', VERSION, 'registered')
 
 function log() {
   var args = []
@@ -271,25 +271,25 @@ function isDnsPort(ip, port, cb) {
   })
 }
 
-function testDNSForLokinet(server, cb) {
+function testDNSForCoinevonet(server, cb) {
   const resolver = new dns.Resolver()
   resolver.setServers([server])
   // incase server is 127.0.0.1:undefined
   try {
-    resolver.resolve('localhost.loki', function (err, records) {
-      if (err) console.error('NETWORK: localhost.loki resolve err:', err)
-      //log(server, 'localhost.loki test results', records)
+    resolver.resolve('localhost.coinevo', function (err, records) {
+      if (err) console.error('NETWORK: localhost.coinevo resolve err:', err)
+      //log(server, 'localhost.coinevo test results', records)
       cb(records)
     })
   } catch (e) {
-    console.error('NETWORK: testDNSForLokinet error, incorrect server?', server)
+    console.error('NETWORK: testDNSForCoinevonet error, incorrect server?', server)
     cb()
   }
 }
 
 function lookup(host, cb) {
   var resolver = new dns.Resolver()
-  //console.log('lokinet lookup servers', runningConfig.dns.bind)
+  //console.log('coinevonet lookup servers', runningConfig.dns.bind)
   resolver.setServers([runningConfig.dns.bind])
   resolver.resolve(host, function (err, records) {
     if (err) {
@@ -301,15 +301,15 @@ function lookup(host, cb) {
         if (err.code == 'ETIMEOUT') {
           records = undefined
         } else {
-          console.error('lokinet lookup unknown err', err)
+          console.error('coinevonet lookup unknown err', err)
         }
     }
-    //console.log(host, 'lokinet dns test results', records)
+    //console.log(host, 'coinevonet dns test results', records)
     cb(records)
   })
 }
 
-function findLokiNetDNS(cb) {
+function findCoinevoNetDNS(cb) {
   const localIPs = getBoundIPv4s()
   var checksLeft = 0
   var servers = []
@@ -317,7 +317,7 @@ function findLokiNetDNS(cb) {
   function checkDone() {
     if (shuttingDown) {
       //if (cb) cb()
-      log('not going to start lokinet, shutting down')
+      log('not going to start coinevonet, shutting down')
       return
     }
     checksLeft--
@@ -337,10 +337,10 @@ function findLokiNetDNS(cb) {
       // local DNS server
       console.log('local DNS server detected', server)
       checksLeft++
-      testDNSForLokinet(server, function(isLokinet) {
-        if (isLokinet) {
-          // lokinet
-          console.log(server, 'is a lokinet DNS server')
+      testDNSForCoinevonet(server, function(isCoinevonet) {
+        if (isCoinevonet) {
+          // coinevonet
+          console.log(server, 'is a coinevonet DNS server')
           servers.push(server)
         }
         checkDone()
@@ -352,10 +352,10 @@ function findLokiNetDNS(cb) {
   for (var i in localIPs) {
     const server = localIPs[i]
     checksLeft++
-    testDNSForLokinet(server, function (isLokinet) {
-      if (isLokinet !== undefined) {
-        // lokinet
-        log(server, 'is a lokinet DNS server')
+    testDNSForCoinevonet(server, function (isCoinevonet) {
+      if (isCoinevonet !== undefined) {
+        // coinevonet
+        log(server, 'is a coinevonet DNS server')
         servers.push(server)
       }
       checkDone()
@@ -372,7 +372,7 @@ function readResolv(dns_ip, cb) {
   function checkDone() {
     if (shuttingDown) {
       //if (cb) cb()
-      log('not going to start lokinet, shutting down')
+      log('not going to start coinevonet, shutting down')
       return
     }
     checksLeft--
@@ -395,10 +395,10 @@ function readResolv(dns_ip, cb) {
     if (idx != -1) {
       log('local DNS server detected', server)
       checksLeft++ // wait for it
-      testDNSForLokinet(server, function (isLokinet) {
-        if (isLokinet === undefined) {
-          // not lokinet
-          log(server, 'is not a lokinet DNS server')
+      testDNSForCoinevonet(server, function (isCoinevonet) {
+        if (isCoinevonet === undefined) {
+          // not coinevonet
+          log(server, 'is not a coinevonet DNS server')
           servers.push(server)
         }
         checkDone()
@@ -431,12 +431,12 @@ function readResolv(dns_ip, cb) {
         const resolver = new dns.Resolver()
         resolver.setServers([server])
         checksLeft++
-        resolver.resolve('localhost.loki', function(err, records) {
+        resolver.resolve('localhost.coinevo', function(err, records) {
           //if (err) console.error(err)
           //console.log('local dns test results', records)
           if (records === undefined) {
-            // not lokinet
-            console.log(server, 'is not a lokinet DNS server')
+            // not coinevonet
+            console.log(server, 'is not a coinevonet DNS server')
             servers.push(server)
           }
           checkDone()
@@ -455,7 +455,7 @@ function readResolv(dns_ip, cb) {
   */
 }
 
-// this can really delay the start of lokinet
+// this can really delay the start of coinevonet
 function findFreePort53(ips, index, cb) {
   log('testing', ips[index], 'port 53')
   isDnsPort(ips[index], 53, function (res) {
@@ -517,47 +517,47 @@ var cleanUpIni = false
 function generateINI(config, need, markDone, cb) {
   const homeDir = os.homedir()
   //console.log('homeDir', homeDir)
-  //const data = fs.readFileSync(homeDir + '/.lokinet/lokinet.ini', 'utf-8')
+  //const data = fs.readFileSync(homeDir + '/.coinevonet/coinevonet.ini', 'utf-8')
   //const jConfig = iniToJSON(data)
   //console.dir(jConfig)
   //const iConfig = jsonToINI(jConfig)
   //console.log(iConfig)
-  var upstreams, lokinet_free53Ip, lokinet_nic
-  var use_lokinet_rpc_port = config.rpc_port
-  var lokinet_bootstrap_path = homeDir + '/.lokinet/bootstrap.signed'
-  var lokinet_nodedb = homeDir + '/.lokinet/netdb'
+  var upstreams, coinevonet_free53Ip, coinevonet_nic
+  var use_coinevonet_rpc_port = config.rpc_port
+  var coinevonet_bootstrap_path = homeDir + '/.coinevonet/bootstrap.signed'
+  var coinevonet_nodedb = homeDir + '/.coinevonet/netdb'
   if (config.netid) {
-    lokinet_nodedb += '-' + config.netid
+    coinevonet_nodedb += '-' + config.netid
   }
-  if (!fs.existsSync(lokinet_nodedb)) {
-    log('making', lokinet_nodedb)
-    mkDirByPathSync(lokinet_nodedb)
+  if (!fs.existsSync(coinevonet_nodedb)) {
+    log('making', coinevonet_nodedb)
+    mkDirByPathSync(coinevonet_nodedb)
   }
   var upstreamDNS_servers = []
   var params = {
     upstreamDNS_servers: upstreamDNS_servers,
-    lokinet_free53Ip: lokinet_free53Ip,
-    lokinet_nodedb: lokinet_nodedb,
-    lokinet_bootstrap_path: lokinet_bootstrap_path,
-    lokinet_nic: lokinet_nic,
-    use_lokinet_rpc_port: use_lokinet_rpc_port,
+    coinevonet_free53Ip: coinevonet_free53Ip,
+    coinevonet_nodedb: coinevonet_nodedb,
+    coinevonet_bootstrap_path: coinevonet_bootstrap_path,
+    coinevonet_nic: coinevonet_nic,
+    use_coinevonet_rpc_port: use_coinevonet_rpc_port,
   }
   if (config.bootstrap_url) {
     httpGet(config.bootstrap_url, function (bootstrapData) {
       if (bootstrapData) {
         cleanUpBootstrap = true
-        const tmpRcPath = os.tmpdir() + '/' + randomString(8) + '.lokinet_signed'
+        const tmpRcPath = os.tmpdir() + '/' + randomString(8) + '.coinevonet_signed'
         fs.writeFileSync(tmpRcPath, bootstrapData, 'binary')
         log('boostrap wrote', bootstrapData.length, 'bytes to', tmpRcPath)
-        //lokinet_bootstrap_path = tmpRcPath
-        params.lokinet_bootstrap_path = tmpRcPath
+        //coinevonet_bootstrap_path = tmpRcPath
+        params.coinevonet_bootstrap_path = tmpRcPath
         config.bootstrap_path = tmpRcPath
       }
       markDone('bootstrap', params)
     })
   } else {
     // seed version
-    //params.lokinet_bootstrap_path = ''
+    //params.coinevonet_bootstrap_path = ''
     markDone('bootstrap', params)
   }
   readResolv(config.dns_ip, function (servers) {
@@ -572,8 +572,8 @@ function generateINI(config, need, markDone, cb) {
     if (testData !== undefined) {
       log('Bumping RPC port', testData)
       // FIXME: retest new port
-      use_lokinet_rpc_port = use_lokinet_rpc_port + 1
-      params.use_lokinet_rpc_port = use_lokinet_rpc_port
+      use_coinevonet_rpc_port = use_coinevonet_rpc_port + 1
+      params.use_coinevonet_rpc_port = use_coinevonet_rpc_port
     }
     markDone('rpcCheck', params)
   })
@@ -592,10 +592,10 @@ function generateINI(config, need, markDone, cb) {
       }
     }
     log('detected outgoing interface ip', ip)
-    lokinet_nic = getIfNameFromIP(ip)
-    params.lokinet_nic = lokinet_nic
+    coinevonet_nic = getIfNameFromIP(ip)
+    params.coinevonet_nic = coinevonet_nic
     params.interfaceIP = ip
-    log('detected outgoing interface', lokinet_nic)
+    log('detected outgoing interface', coinevonet_nic)
     markDone('netIf', params)
     if (skipDNS) return
     var tryIps = ['127.0.0.1']
@@ -605,14 +605,14 @@ function generateINI(config, need, markDone, cb) {
     tryIps.push(ip)
     findFreePort53(tryIps, 0, function (free53Ip) {
       if (free53Ip === undefined) {
-        console.error('NETWORK: Cant automatically find an IP to put a lokinet DNS server on')
+        console.error('NETWORK: Cant automatically find an IP to put a coinevonet DNS server on')
         // can't handle the exits here because we don't know if it's an actual requirements
         if (done.dnsBind !== undefined) {
           process.exit()
         }
       }
-      lokinet_free53Ip = free53Ip
-      params.lokinet_free53Ip = free53Ip
+      coinevonet_free53Ip = free53Ip
+      params.coinevonet_free53Ip = free53Ip
       log('binding DNS port 53 to', free53Ip)
       markDone('dnsBind', params)
     })
@@ -640,7 +640,7 @@ function applyConfig(file_config, config_obj) {
     config_obj.router.nickname = file_config.nickname
   }
   // set default netid based on testnet
-  if (file_config.lokid && file_config.lokid.network == "test") {
+  if (file_config.coinevod && file_config.coinevod.network == "test") {
     config_obj.router.netid = 'service'
     //runningConfig.network['ifaddr'] = '10.254.0.1/24' // hack for Ryan's box
   }
@@ -698,23 +698,23 @@ function generateSerivceNodeINI(config, cb) {
     }
     if (shuttingDown) {
       //if (cb) cb()
-      log('not going to start lokinet, shutting down')
+      log('not going to start coinevonet, shutting down')
       return
     }
     if (!ready) return
     // we may have un-required proceses call markDone after we started
     if (genSnCallbackFired) return
     genSnCallbackFired = true
-    var keyPath = homeDir + '/.loki/'
+    var keyPath = homeDir + '/.coinevo/'
     //
-    if (config.lokid.data_dir) {
-      keyPath = config.lokid.data_dir
+    if (config.coinevod.data_dir) {
+      keyPath = config.coinevod.data_dir
       // make sure it has a trailing slash
       if (keyPath[keyPath.length - 1] != '/') {
         keyPath += '/'
       }
     }
-    if (config.lokid.network == "test" || config.lokid.network == "demo") {
+    if (config.coinevod.network == "test" || config.coinevod.network == "demo") {
       keyPath += 'testnet/'
     }
     keyPath += 'key'
@@ -725,7 +725,7 @@ function generateSerivceNodeINI(config, cb) {
       log('NAT DETECTED MAKE SURE YOU FORWARD UDP PORT', config.public_port, 'on', params.publicIP, 'to', params.interfaceIP)
       useNAT = true
     }
-    log('Drafting lokinet service node config')
+    log('Drafting coinevonet service node config')
     // FIXME: lock down identity.private for storage server
     runningConfig = {
       router: {
@@ -733,10 +733,10 @@ function generateSerivceNodeINI(config, cb) {
       },
       dns: {
         upstream: params.upstreamDNS_servers,
-        bind: params.lokinet_free53Ip + ':53',
+        bind: params.coinevonet_free53Ip + ':53',
       },
       netdb: {
-        dir: params.lokinet_nodedb,
+        dir: params.coinevonet_nodedb,
       },
       bind: {
         // will be set after
@@ -744,13 +744,13 @@ function generateSerivceNodeINI(config, cb) {
       network: {},
       api: {
         enabled: true,
-        bind: config.rpc_ip + ':' + params.use_lokinet_rpc_port
+        bind: config.rpc_ip + ':' + params.use_coinevonet_rpc_port
       },
-      lokid: {
+      coinevod: {
         enabled: true,
-        jsonrpc: config.lokid.rpc_ip + ':' + config.lokid.rpc_port,
-        username: config.lokid.rpc_user,
-        password: config.lokid.rpc_pass,
+        jsonrpc: config.coinevod.rpc_ip + ':' + config.coinevod.rpc_port,
+        username: config.coinevod.rpc_user,
+        password: config.coinevod.rpc_pass,
         'service-node-seed': keyPath
       }
     }
@@ -763,9 +763,9 @@ function generateSerivceNodeINI(config, cb) {
       runningConfig.router['public-ip'] = config.public_ip
       runningConfig.router['public-port'] = config.public_port
     }
-    runningConfig.bind[params.lokinet_nic] = config.public_port
+    runningConfig.bind[params.coinevonet_nic] = config.public_port
     if (config.internal_port) {
-      runningConfig.bind[params.lokinet_nic] = config.internal_port
+      runningConfig.bind[params.coinevonet_nic] = config.internal_port
     }
     applyConfig(config, runningConfig)
     // optional bootstrap (might be a seed if not)
@@ -802,26 +802,26 @@ function generateClientINI(config, cb) {
     // make sure we didn't already start
     if (genClientCallbackFired) return
     genClientCallbackFired = true
-    if (!params.use_lokinet_rpc_port) {
+    if (!params.use_coinevonet_rpc_port) {
       // use default because we enable it
-      params.use_lokinet_rpc_port = 1190
+      params.use_coinevonet_rpc_port = 1190
     }
-    log('Drafting lokinet client config')
+    log('Drafting coinevonet client config')
     runningConfig = {
       router: {
         nickname: 'ldl',
       },
       dns: {
         upstream: params.upstreamDNS_servers,
-        bind: params.lokinet_free53Ip + ':53',
+        bind: params.coinevonet_free53Ip + ':53',
       },
       netdb: {
-        dir: params.lokinet_nodedb,
+        dir: params.coinevonet_nodedb,
       },
       network: {},
       api: {
         enabled: true,
-        bind: config.rpc_ip + ':' + params.use_lokinet_rpc_port
+        bind: config.rpc_ip + ':' + params.use_coinevonet_rpc_port
       },
     }
     applyConfig(config, runningConfig)
@@ -836,10 +836,10 @@ function generateClientINI(config, cb) {
 }
 
 var shuttingDown
-var lokinet
-var lokinetLogging = true
+var coinevonet
+var coinevonetLogging = true
 
-function preLaunchLokinet(config, cb) {
+function preLaunchCoinevonet(config, cb) {
   //console.log('userInfo', os.userInfo('utf8'))
   //console.log('started as', process.getuid(), process.geteuid())
 
@@ -861,7 +861,7 @@ function preLaunchLokinet(config, cb) {
     // not root-like
     exec('getcap ' + config.binary_path, function (error, stdout, stderr) {
       //console.log('stdout', stdout)
-      // src/loki-network/lokinet = cap_net_bind_service,cap_net_admin+eip
+      // src/coinevo-network/coinevonet = cap_net_bind_service,cap_net_admin+eip
       if (!(stdout.match(/cap_net_bind_service/) && stdout.match(/cap_net_admin/))) {
         if (process.getgid() != 0) {
           conole.log(config.binary_path, 'does not have setcap. Please setcap the binary (make install usually does this) or run launcher root one time, so we can')
@@ -877,7 +877,7 @@ function preLaunchLokinet(config, cb) {
     })
   }
 
-  // lokinet will crash if this file is zero bytes
+  // coinevonet will crash if this file is zero bytes
   if (fs.existsSync('profiles.dat')) {
     var stats = fs.statSync('profiles.dat')
     if (!stats.size) {
@@ -887,12 +887,12 @@ function preLaunchLokinet(config, cb) {
   }
 
   const tmpDir = os.tmpdir()
-  const tmpPath = tmpDir + '/' + randomString(8) + '.lokinet_ini'
+  const tmpPath = tmpDir + '/' + randomString(8) + '.coinevonet_ini'
   cleanUpIni = true
   config.ini_writer(config, function (iniData) {
     if (shuttingDown) {
       //if (cb) cb()
-      log('not going to write lokinet config, shutting down')
+      log('not going to write coinevonet config, shutting down')
       return
     }
     log(iniData, 'as', tmpPath)
@@ -902,14 +902,14 @@ function preLaunchLokinet(config, cb) {
   })
 }
 
-function launchLokinet(config, cb) {
+function launchCoinevonet(config, cb) {
   if (shuttingDown) {
     //if (cb) cb()
-    log('not going to start lokinet, shutting down')
+    log('not going to start coinevonet, shutting down')
     return
   }
   if (!fs.existsSync(config.ini_file)) {
-    log('lokinet config file', config.ini_file, 'does not exist')
+    log('coinevonet config file', config.ini_file, 'does not exist')
     process.exit()
   }
   // command line options
@@ -918,15 +918,15 @@ function launchLokinet(config, cb) {
     cli_options.push('-v')
   }
   console.log('network: launching', config.binary_path, cli_options.join(' '))
-  lokinet = spawn(config.binary_path, cli_options)
+  coinevonet = spawn(config.binary_path, cli_options)
 
-  if (!lokinet) {
-    console.error('failed to start lokinet, exiting...')
+  if (!coinevonet) {
+    console.error('failed to start coinevonet, exiting...')
     // proper shutdown?
     process.exit()
   }
-  lokinet.killed = false
-  lokinet.stdout.on('data', (data) => {
+  coinevonet.killed = false
+  coinevonet.stdout.on('data', (data) => {
     var parts = data.toString().split(/\n/)
     parts.pop()
     data = parts.join('\n')
@@ -935,16 +935,16 @@ function launchLokinet(config, cb) {
     }
   })
 
-  lokinet.stderr.on('data', (data) => {
+  coinevonet.stderr.on('data', (data) => {
     if (module.exports.onError) {
       module.exports.onError(data)
     }
   })
 
-  lokinet.on('close', (code) => {
-    log(`lokinet process exited with code ${code}`)
+  coinevonet.on('close', (code) => {
+    log(`coinevonet process exited with code ${code}`)
     // code 0 means clean shutdown
-    lokinet.killed = true
+    coinevonet.killed = true
     // clean up
     // if we have a temp bootstrap, clean it
     if (cleanUpBootstrap && runningConfig.bootstrap['add-node'] && fs.existsSync(runningConfig.bootstrap['add-node'])) {
@@ -957,8 +957,8 @@ function launchLokinet(config, cb) {
       if (config.restart) {
         // restart it in 30 seconds to avoid pegging the cpu
         setTimeout(function () {
-          log('loki_daemon is still running, restarting lokinet')
-          launchLokinet(config)
+          log('coinevo_daemon is still running, restarting coinevonet')
+          launchCoinevonet(config)
         }, 30 * 1000)
       } else {
         // don't restart...
@@ -979,7 +979,7 @@ function checkConfig(config) {
   auto_config_test_host = config.auto_config_test_host
   auto_config_test_ips = config.auto_config_test_ips
 
-  if (config.binary_path === undefined) config.binary_path = '/usr/local/bin/lokinet'
+  if (config.binary_path === undefined) config.binary_path = '/usr/local/bin/coinevonet'
 
   // we don't always want a bootstrap (seed mode)
 
@@ -1002,7 +1002,7 @@ function waitForUrl(url, cb) {
       // no data could me 404
       if (shuttingDown) {
         //if (cb) cb()
-        log('not going to start lokinet, shutting down')
+        log('not going to start coinevonet, shutting down')
         return
       }
       setTimeout(function () {
@@ -1019,14 +1019,14 @@ function startServiceNode(config, cb) {
   config.ini_writer = generateSerivceNodeINI
   config.restart = true
   // FIXME: check for bootstrap stomp and strip it
-  // only us lokinet devs will need to make our own seed node
-  preLaunchLokinet(config, function () {
-    // test lokid rpc port first
+  // only us coinevonet devs will need to make our own seed node
+  preLaunchCoinevonet(config, function () {
+    // test coinevod rpc port first
     // also this makes sure the service key file exists
-    var url = 'http://' + config.lokid.rpc_user + ':' + config.lokid.rpc_pass + '@' + config.lokid.rpc_ip + ':' + config.lokid.rpc_port
-    log('lokinet waiting for lokid RPC server')
+    var url = 'http://' + config.coinevod.rpc_user + ':' + config.coinevod.rpc_pass + '@' + config.coinevod.rpc_ip + ':' + config.coinevod.rpc_port
+    log('coinevonet waiting for coinevod RPC server')
     waitForUrl(url, function () {
-      launchLokinet(config, cb)
+      launchCoinevonet(config, cb)
     })
   })
 }
@@ -1035,15 +1035,15 @@ function startClient(config, cb) {
   checkConfig(config)
   if (config.bootstrap_path === undefined && config.bootstrap_url === undefined) config.bootstrap_url = 'https://i2p.rocks/bootstrap.signed'
   config.ini_writer = generateClientINI
-  preLaunchLokinet(config, function () {
-    launchLokinet(config, cb)
+  preLaunchCoinevonet(config, function () {
+    launchCoinevonet(config, cb)
   })
 }
 
 // return a truish value if so
 function isRunning() {
   // should we block until port is responding?
-  return lokinet
+  return coinevonet
 }
 
 // copied from lib
@@ -1074,13 +1074,13 @@ function isPidRunning(pid) {
   }
 }
 
-// intent to stop lokinet and don't restart it
+// intent to stop coinevonet and don't restart it
 var retries = 0
 
 function stop() {
   shuttingDown = true
-  if (lokinet && lokinet.killed) {
-    console.warn('lokinet already stopped')
+  if (coinevonet && coinevonet.killed) {
+    console.warn('coinevonet already stopped')
     retries++
     if (retries > 3) {
       // 3 exits in a row, something isn't dying
@@ -1089,29 +1089,29 @@ function stop() {
     }
     return
   }
-  log('requesting lokinet be shutdown')
-  if (lokinet && !lokinet.killed) {
-    log('sending SIGINT to lokinet', lokinet.pid)
-    process.kill(lokinet.pid, 'SIGINT')
-    lokinet.killed = true
-    // HACK: lokinet on macos can not be killed if rpc port is in use
+  log('requesting coinevonet be shutdown')
+  if (coinevonet && !coinevonet.killed) {
+    log('sending SIGINT to coinevonet', coinevonet.pid)
+    process.kill(coinevonet.pid, 'SIGINT')
+    coinevonet.killed = true
+    // HACK: coinevonet on macos can not be killed if rpc port is in use
     var monitorTimerStart = Date.now()
     var monitorTimer = setInterval(function () {
-      if (!isPidRunning(lokinet.pid)) {
+      if (!isPidRunning(coinevonet.pid)) {
         // launcher can't exit until this interval is cleared
         clearInterval(monitorTimer)
       } else {
         var diff = Date.now() - monitorTimerStart
         if (diff > 15 * 1000) {
-          // reach 15 secs and lokinet is still running
+          // reach 15 secs and coinevonet is still running
           // escalate it
-          console.error('Lokinet is still running 15s after we intentionally stopped lokinet?')
-          process.kill(lokinet.pid, 'SIGKILL')
+          console.error('Coinevonet is still running 15s after we intentionally stopped coinevonet?')
+          process.kill(coinevonet.pid, 'SIGKILL')
         } else
         if (diff > 30 * 1000) {
-          // reach 30 secs and lokinet is still running
+          // reach 30 secs and coinevonet is still running
           // escalate it
-          console.error('Lokinet is still running 30s after we intentionally killed lokinet?')
+          console.error('Coinevonet is still running 30s after we intentionally killed coinevonet?')
           var handles = process._getActiveHandles()
           console.log('handles', handles.length)
           for (var i in handles) {
@@ -1129,11 +1129,11 @@ function stop() {
     setTimeout(function() {
       try {
         // check to see if still running
-        process.kill(lokinet.pid, 0)
-        log('sending SIGKILL to lokinet')
-        process.kill(lokinet.pid, 'SIGKILL')
+        process.kill(coinevonet.pid, 0)
+        log('sending SIGKILL to coinevonet')
+        process.kill(coinevonet.pid, 'SIGKILL')
       } catch(e) {
-        console.error('Launcher is still running 15s after we intentionally stopped lokinet?')
+        console.error('Launcher is still running 15s after we intentionally stopped coinevonet?')
         var handles = process._getActiveHandles()
         console.log('handles', handles.length)
         for(var i in handles) {
@@ -1150,34 +1150,34 @@ function stop() {
 
 // isRunning covers this too well
 function getPID() {
-  return (lokinet && !lokinet.killed && lokinet.pid) ? lokinet.pid : 0
+  return (coinevonet && !coinevonet.killed && coinevonet.pid) ? coinevonet.pid : 0
 }
 
 function enableLogging() {
-  lokinetLogging = true
+  coinevonetLogging = true
 }
 
 function disableLogging() {
-  console.log('Disabling lokinet logging')
-  lokinetLogging = false
+  console.log('Disabling coinevonet logging')
+  coinevonetLogging = false
 }
 
-function getLokiNetIP(cb) {
+function getCoinevoNetIP(cb) {
   function checkDNS() {
-    log('lokinet seems to be running, querying', runningConfig.dns.bind)
+    log('coinevonet seems to be running, querying', runningConfig.dns.bind)
     // where's our DNS server?
-    //log('RunningConfig says our lokinet\'s DNS is on', runningConfig.dns.bind)
-    testDNSForLokinet(runningConfig.dns.bind, function (ips) {
-      //log('lokinet test', ips)
+    //log('RunningConfig says our coinevonet\'s DNS is on', runningConfig.dns.bind)
+    testDNSForCoinevonet(runningConfig.dns.bind, function (ips) {
+      //log('coinevonet test', ips)
       if (ips && ips.length) {
         cb(ips[0])
       } else {
         // , retrying
-        console.error('cant communicate with lokinet DNS')
+        console.error('cant communicate with coinevonet DNS')
         /*
         //process.exit()
         setTimeout(function() {
-          getLokiNetIP(cb)
+          getCoinevoNetIP(cb)
         }, 1000)
         */
         cb()
@@ -1185,7 +1185,7 @@ function getLokiNetIP(cb) {
     })
   }
   if (runningConfig.api.enabled) {
-    log('wait for lokinet startup', runningConfig.api)
+    log('wait for coinevonet startup', runningConfig.api)
     var url = 'http://' + runningConfig.api.bind + '/'
     waitForUrl(url, function () {
       checkDNS()
@@ -1199,21 +1199,21 @@ module.exports = {
   startServiceNode: startServiceNode,
   startClient: startClient,
   checkConfig: checkConfig,
-  findLokiNetDNS: findLokiNetDNS,
+  findCoinevoNetDNS: findCoinevoNetDNS,
   lookup: lookup,
   isRunning: isRunning,
   stop: stop,
-  getLokiNetIP: getLokiNetIP,
+  getCoinevoNetIP: getCoinevoNetIP,
   enableLogging: enableLogging,
   disableLogging: disableLogging,
   getPID: getPID,
   // FIXME: should we allow hooking of log() too?
   onMessage: function (data) {
-    if (lokinetLogging) {
-      console.log(`lokinet: ${data}`)
+    if (coinevonetLogging) {
+      console.log(`coinevonet: ${data}`)
     }
   },
   onError: function (data) {
-    console.log(`lokineterr: ${data}`)
+    console.log(`coinevoneterr: ${data}`)
   },
 }

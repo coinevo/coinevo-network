@@ -4,11 +4,11 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace network.loki.lokinet.win32.ui
+namespace network.coinevo.coinevonet.win32.ui
 {
     public partial class main_frame : Form
     {
-        public static Process lokiNetDaemon = new Process();
+        public static Process coinevoNetDaemon = new Process();
         public static bool isConnected;
         public static string logText;
         private string config_path;
@@ -16,25 +16,25 @@ namespace network.loki.lokinet.win32.ui
 
         void UpdateUI(string text)
         {
-            this.Invoke(new MethodInvoker(delegate () { lokinetd_fd1.AppendText(text); }));
+            this.Invoke(new MethodInvoker(delegate () { coinevonetd_fd1.AppendText(text); }));
         }
 
         public main_frame()
         {
             InitializeComponent();
             if (Program.platform == PlatformID.Win32NT)
-                config_path = Environment.ExpandEnvironmentVariables("%APPDATA%\\.lokinet");
+                config_path = Environment.ExpandEnvironmentVariables("%APPDATA%\\.coinevonet");
             else
-                config_path = Environment.ExpandEnvironmentVariables("%HOME%/.lokinet");
+                config_path = Environment.ExpandEnvironmentVariables("%HOME%/.coinevonet");
             StatusLabel.Text = "Disconnected";
             var build = ((AssemblyInformationalVersionAttribute)Assembly
   .GetAssembly(typeof(main_frame))
   .GetCustomAttributes(typeof(AssemblyInformationalVersionAttribute), false)[0])
   .InformationalVersion;
-            UIVersionLabel.Text = String.Format("Lokinet version {0}", build);
-            lokinetd_fd1.Text = string.Empty;
+            UIVersionLabel.Text = String.Format("Coinevonet version {0}", build);
+            coinevonetd_fd1.Text = string.Empty;
             logText = string.Empty;
-            lokiNetDaemon.OutputDataReceived += new DataReceivedEventHandler((s, ev) =>
+            coinevoNetDaemon.OutputDataReceived += new DataReceivedEventHandler((s, ev) =>
             {
                 if (!string.IsNullOrEmpty(ev.Data))
                 {
@@ -53,51 +53,51 @@ namespace network.loki.lokinet.win32.ui
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            string lokinetExeString;
+            string coinevonetExeString;
 
             if (Program.platform == PlatformID.Win32NT)
-                lokinetExeString = String.Format("{0}\\lokinet.exe", Directory.GetCurrentDirectory());
+                coinevonetExeString = String.Format("{0}\\coinevonet.exe", Directory.GetCurrentDirectory());
             else
-                lokinetExeString = String.Format("{0}/lokinet", Directory.GetCurrentDirectory());
+                coinevonetExeString = String.Format("{0}/coinevonet", Directory.GetCurrentDirectory());
 
-            lokiNetDaemon.StartInfo.UseShellExecute = false;
-            lokiNetDaemon.StartInfo.RedirectStandardOutput = true;
-            //lokiNetDaemon.EnableRaisingEvents = true;
-            lokiNetDaemon.StartInfo.CreateNoWindow = true;
-            lokiNetDaemon.StartInfo.FileName = lokinetExeString;
-            lokiNetDaemon.Start();
-            lokiNetDaemon.BeginOutputReadLine();
+            coinevoNetDaemon.StartInfo.UseShellExecute = false;
+            coinevoNetDaemon.StartInfo.RedirectStandardOutput = true;
+            //coinevoNetDaemon.EnableRaisingEvents = true;
+            coinevoNetDaemon.StartInfo.CreateNoWindow = true;
+            coinevoNetDaemon.StartInfo.FileName = coinevonetExeString;
+            coinevoNetDaemon.Start();
+            coinevoNetDaemon.BeginOutputReadLine();
             btnConnect.Enabled = false;
             TrayConnect.Enabled = false;
             StatusLabel.Text = "Connected";
             isConnected = true;
-            NotificationTrayIcon.Text = "Lokinet - connected";
+            NotificationTrayIcon.Text = "Coinevonet - connected";
             btnDrop.Enabled = true;
             TrayDisconnect.Enabled = true;
-            NotificationTrayIcon.ShowBalloonTip(5, "Lokinet", "Connected to network.", ToolTipIcon.Info);
+            NotificationTrayIcon.ShowBalloonTip(5, "Coinevonet", "Connected to network.", ToolTipIcon.Info);
         }
 
         private void btnDrop_Click(object sender, EventArgs e)
         {
-            lokiNetDaemon.CancelOutputRead();
-            lokiNetDaemon.Kill();
+            coinevoNetDaemon.CancelOutputRead();
+            coinevoNetDaemon.Kill();
             btnConnect.Enabled = true;
             TrayConnect.Enabled = true;
             btnDrop.Enabled = false;
             TrayDisconnect.Enabled = false;
             StatusLabel.Text = "Disconnected";
-            NotificationTrayIcon.Text = "Lokinet - disconnected";
+            NotificationTrayIcon.Text = "Coinevonet - disconnected";
             isConnected = false;
-            logText = lokinetd_fd1.Text;
-            lokinetd_fd1.Text = string.Empty;
-            NotificationTrayIcon.ShowBalloonTip(5, "Lokinet", "Disconnected from network.", ToolTipIcon.Info);
+            logText = coinevonetd_fd1.Text;
+            coinevonetd_fd1.Text = string.Empty;
+            NotificationTrayIcon.ShowBalloonTip(5, "Coinevonet", "Disconnected from network.", ToolTipIcon.Info);
 
         }
 
-        private void lokinetd_fd1_TextChanged(object sender, EventArgs e)
+        private void coinevonetd_fd1_TextChanged(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.autoScroll)
-                lokinetd_fd1.ScrollToCaret();
+                coinevonetd_fd1.ScrollToCaret();
             else
                 return;
         }
@@ -106,9 +106,9 @@ namespace network.loki.lokinet.win32.ui
         {
             Hide();
             if (isConnected)
-                NotificationTrayIcon.ShowBalloonTip(5, "Lokinet", "Currently connected.", ToolTipIcon.Info);
+                NotificationTrayIcon.ShowBalloonTip(5, "Coinevonet", "Currently connected.", ToolTipIcon.Info);
             else
-                NotificationTrayIcon.ShowBalloonTip(5, "Lokinet", "Currently disconnected.", ToolTipIcon.Info);
+                NotificationTrayIcon.ShowBalloonTip(5, "Coinevonet", "Currently disconnected.", ToolTipIcon.Info);
         }
 
         private void NotificationTrayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -143,7 +143,7 @@ namespace network.loki.lokinet.win32.ui
                     ld.setText(logText);
 
                 ld.CreateLog(config_path);
-                MessageBox.Show(string.Format("Wrote log to {0}, previous log rotated", ld.getLogPath()), "Lokinet", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(string.Format("Wrote log to {0}, previous log rotated", ld.getLogPath()), "Coinevonet", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 logText = string.Empty;
             }
         }

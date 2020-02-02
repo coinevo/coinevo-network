@@ -1,1 +1,1 @@
-add_executable(lokinet AppDelegate.swift ViewController.swift)
+add_executable(coinevonet AppDelegate.swift ViewController.swift)

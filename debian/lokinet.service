@@ -1,13 +1,13 @@
 [Unit]
-Description=LokiNET: Anonymous Network layer thingydoo.
+Description=CoinevoNET: Anonymous Network layer thingydoo.
 Wants=network-online.target
 After=network-online.target
 
 [Service]
-User=debian-lokinet
-SyslogIdentifier=lokinet
-ExecStartPre=/bin/bash -c "/usr/bin/lokinet-bootstrap && /usr/bin/lokinet -g"
-ExecStart=/usr/bin/lokinet
+User=debian-coinevonet
+SyslogIdentifier=coinevonet
+ExecStartPre=/bin/bash -c "/usr/bin/coinevonet-bootstrap && /usr/bin/coinevonet -g"
+ExecStart=/usr/bin/coinevonet
 Restart=always
 
 [Install]

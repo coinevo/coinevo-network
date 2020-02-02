@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7BED5B75232D78D900DF603F"
-               BuildableName = "lokinet.app"
-               BlueprintName = "lokinet"
-               ReferencedContainer = "container:lokinet.xcodeproj">
+               BuildableName = "coinevonet.app"
+               BlueprintName = "coinevonet"
+               ReferencedContainer = "container:coinevonet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7BED5B87232D78DB00DF603F"
-               BuildableName = "lokinetTests.xctest"
-               BlueprintName = "lokinetTests"
-               ReferencedContainer = "container:lokinet.xcodeproj">
+               BuildableName = "coinevonetTests.xctest"
+               BlueprintName = "coinevonetTests"
+               ReferencedContainer = "container:coinevonet.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7BED5B92232D78DB00DF603F"
-               BuildableName = "lokinetUITests.xctest"
-               BlueprintName = "lokinetUITests"
-               ReferencedContainer = "container:lokinet.xcodeproj">
+               BuildableName = "coinevonetUITests.xctest"
+               BlueprintName = "coinevonetUITests"
+               ReferencedContainer = "container:coinevonet.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7BED5B75232D78D900DF603F"
-            BuildableName = "lokinet.app"
-            BlueprintName = "lokinet"
-            ReferencedContainer = "container:lokinet.xcodeproj">
+            BuildableName = "coinevonet.app"
+            BlueprintName = "coinevonet"
+            ReferencedContainer = "container:coinevonet.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7BED5B75232D78D900DF603F"
-            BuildableName = "lokinet.app"
-            BlueprintName = "lokinet"
-            ReferencedContainer = "container:lokinet.xcodeproj">
+            BuildableName = "coinevonet.app"
+            BlueprintName = "coinevonet"
+            ReferencedContainer = "container:coinevonet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7BED5B75232D78D900DF603F"
-            BuildableName = "lokinet.app"
-            BlueprintName = "lokinet"
-            ReferencedContainer = "container:lokinet.xcodeproj">
+            BuildableName = "coinevonet.app"
+            BlueprintName = "coinevonet"
+            ReferencedContainer = "container:coinevonet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

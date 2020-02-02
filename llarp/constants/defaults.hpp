@@ -12,18 +12,18 @@
 #endif
 
 #ifdef DEBIAN
-#ifndef DEFAULT_LOKINET_USER
-#define DEFAULT_LOKINET_USER "debian-lokinet"
+#ifndef DEFAULT_COINEVONET_USER
+#define DEFAULT_COINEVONET_USER "debian-coinevonet"
 #endif
-#ifndef DEFAULT_LOKINET_GROUP
-#define DEFAULT_LOKINET_GROUP "debian-lokinet"
+#ifndef DEFAULT_COINEVONET_GROUP
+#define DEFAULT_COINEVONET_GROUP "debian-coinevonet"
 #endif
 #else
-#ifndef DEFAULT_LOKINET_USER
-#define DEFAULT_LOKINET_USER "lokinet"
+#ifndef DEFAULT_COINEVONET_USER
+#define DEFAULT_COINEVONET_USER "coinevonet"
 #endif
-#ifndef DEFAULT_LOKINET_GROUP
-#define DEFAULT_LOKINET_GROUP "lokinet"
+#ifndef DEFAULT_COINEVONET_GROUP
+#define DEFAULT_COINEVONET_GROUP "coinevonet"
 #endif
 #endif
 
